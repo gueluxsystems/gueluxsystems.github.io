@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "src": "assets/img/hero.jpg",
+    "title": "High Trestle Bridge",
+    "creator": "Carol (vanhookc)",
+    "creator_url": "https://www.flickr.com/photos/97651299@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/97651299@N00/13368326574",
+    "source": "flickr"
+  },
+  "services": {
+    "src": "assets/img/services.jpg",
+    "title": "New Toy",
+    "creator": "archie4oz",
+    "creator_url": "https://www.flickr.com/photos/29078044@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/29078044@N00/148969995",
+    "source": "flickr"
+  },
+  "process": {
+    "src": "assets/img/process.jpg",
+    "title": "Nimbuzz Argentina - Office",
+    "creator": "Nimbuzz",
+    "creator_url": "https://www.flickr.com/photos/9078261@N07",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/9078261@N07/3521170397",
+    "source": "flickr"
+  },
+  "about": {
+    "src": "assets/img/about.jpg",
+    "title": "Women In Tech - 39",
+    "creator": "wocintechchat.com",
+    "creator_url": "https://www.flickr.com/photos/136629440@N06",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/136629440@N06/22532345565",
+    "source": "woc_tech"
+  }
+}
