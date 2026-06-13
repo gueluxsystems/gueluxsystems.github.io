@@ -148,9 +148,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-color: var(--line);
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 7px;
+  display: flex; align-items: center; gap: 10px;
   font-size: 1.05rem; font-weight: 900;
   letter-spacing: 0.14em; text-transform: uppercase;
+}
+.nav-logo-img {
+  height: 26px; width: auto; display: block;
 }
 .nav-logo-dot {
   width: 7px; height: 7px;
