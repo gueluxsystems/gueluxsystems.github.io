@@ -135,8 +135,8 @@ async function responder(m){
     await bot('Con gusto te paso los valores, pero contame primero qué buscás: ¿alquiler o venta, zona, ambientes?'); setQuick(QUICK_INICIO); return;
   }
 
-  // Requisitos
-  if(/(requisit|garant[ií]a|para alquilar|papeles|qu[eé] piden)/.test(t)){ await bot(REQUISITOS); setQuick(['Coordinar una visita','Ver propiedades']); return; }
+  // Requisitos (ojo: NO incluir "para alquilar" acá, choca con "busco para alquilar")
+  if(/(requisit|qu[eé] piden|qu[eé] necesito|garant[ií]a|papeles|documenta)/.test(t)){ await bot(REQUISITOS); setQuick(['Coordinar una visita','Ver propiedades']); return; }
 
   // Nueva búsqueda -> INDAGAR primero
   if(esPropiedad(t) && S.paso!=='indagando' && !S.listo){ S.paso='indagando'; if(modo) S.modo=modo; await bot('¡Dale! ¿La estás buscando para alquilar o para comprar? Y contame la zona y de cuántos ambientes, así te muestro lo mejor que tengo.'); setQuick(['Alquilar, 2 amb en Palermo','Comprar, 3 amb en Belgrano']); return; }
