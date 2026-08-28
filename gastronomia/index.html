@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atención por WhatsApp para restaurantes y gastronomía | Guelux</title>
+<meta name="description" content="Así respondería el WhatsApp de tu restaurante: reservas, menú, delivery y horarios, al instante y 24/7, con la info real del local. No dejes ninguna reserva sin responder. Probá el agente." />
+<meta name="keywords" content="atención WhatsApp restaurante, chatbot gastronomía, reservas por WhatsApp, agente IA restaurante, IA para restaurantes, responder reservas automático" />
+<link rel="canonical" href="https://guelux.com/gastronomia/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#0a343d" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Guelux" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Atención por WhatsApp para restaurantes | Guelux" />
+<meta property="og:description" content="Así respondería el WhatsApp de tu restaurante: reservas, menú, delivery y horarios, al instante. Probá el agente." />
+<meta property="og:url" content="https://guelux.com/gastronomia/" />
+<meta property="og:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atención por WhatsApp para restaurantes | Guelux" />
+<meta name="twitter:description" content="Así respondería el WhatsApp de tu restaurante: reservas, menú, delivery y horarios. Probá el agente." />
+<meta name="twitter:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Service","@id":"https://guelux.com/gastronomia/#service","name":"Atención por WhatsApp para restaurantes y gastronomía","serviceType":"Agente de IA para reservas y atención por WhatsApp","provider":{"@type":"Organization","name":"Guelux","url":"https://guelux.com/"},"areaServed":"AR","description":"Un agente de IA que atiende el WhatsApp de tu restaurante 24/7: toma reservas, responde por el menú, delivery y horarios con la info real del local, y deriva a una persona cuando hace falta."},
+ {"@type":"FAQPage","@id":"https://guelux.com/gastronomia/#faq","mainEntity":[
+   {"@type":"Question","name":"¿Sirve para un restaurante?","acceptedAnswer":{"@type":"Answer","text":"Sí. El agente toma reservas, responde por el menú, el delivery y los horarios al instante y 24/7, con la info real del local, sin que tengas que frenar el servicio para contestar el WhatsApp."}},
+   {"@type":"Question","name":"¿Inventa datos del menú o los horarios?","acceptedAnswer":{"@type":"Answer","text":"No. Responde solo con lo que cargás (carta, precios, horarios, zonas de delivery). Si no tiene el dato, no lo inventa: toma los datos y deriva a una persona."}},
+   {"@type":"Question","name":"¿Cómo ayuda a no perder reservas?","acceptedAnswer":{"@type":"Answer","text":"Muchas reservas y consultas llegan en pleno servicio o fuera de horario. Si no contestás a tiempo, la mesa se va a otro lado. El agente responde al toque y no deja ninguna sin atender."}}
+ ]}
+]}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --wa-bg:#0b141a; --wa-panel:#111b21; --in:#202c33; --out:#005c4b; --txt:#e9edef; --teal:#115361; --lima:#cee988; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0a343d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; gap:40px; flex-wrap:wrap; }
+  .pitch { max-width:340px; color:#cfe0e3; }
+  .pitch .dot{width:18px;height:18px;background:var(--lima);border-radius:50%;display:inline-block;vertical-align:middle}
+  .pitch h1{color:#fff;font-size:30px;font-weight:800;line-height:1.15;margin:14px 0}
+  .pitch p{font-size:16px;line-height:1.6;color:#a7c0c4;margin-bottom:14px}
+  .pitch .b{color:var(--lima);font-weight:700}
+  .pitch small{color:#6f8a8f;font-size:13px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#07120b;font-weight:700;font-size:15px;padding:13px 20px;border-radius:9999px;text-decoration:none;margin-top:6px;box-shadow:0 10px 28px -8px #0008}
+  .cta:hover{opacity:.92}
+  .cta2{display:inline-block;color:var(--lima);font-weight:600;font-size:14px;text-decoration:none;margin-top:14px;border-bottom:1px solid #cee98855}
+  .phone { width:380px; height:760px; background:var(--wa-bg); border-radius:30px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px #0006; border:8px solid #1c2b32; }
+  .head { background:var(--wa-panel); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #ffffff10; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#115361,#1a7d8a); display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .head .name { color:var(--txt); font-weight:700; font-size:16px; }
+  .head .status { color:#8696a0; font-size:12px; }
+  .head .status b { color:#25d366; }
+  .chat { flex:1; overflow-y:auto; padding:18px 14px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { max-width:82%; padding:8px 12px; border-radius:10px; font-size:14.5px; color:var(--txt); line-height:1.45; position:relative; animation:pop .25s ease; white-space:pre-wrap; }
+  @keyframes pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .in { background:var(--in); align-self:flex-start; border-top-left-radius:2px; }
+  .out { background:var(--out); align-self:flex-end; border-top-right-radius:2px; }
+  .t { font-size:10px; color:#ffffff80; display:block; text-align:right; margin-top:3px; }
+  .typing { align-self:flex-start; background:var(--in); padding:12px 16px; border-radius:10px; display:none; margin:0 14px; }
+  .typing span { display:inline-block; width:7px; height:7px; background:#8696a0; border-radius:50%; margin:0 2px; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+  .foot { background:var(--wa-panel); padding:10px 12px; display:flex; gap:8px; align-items:center; }
+  .foot input { flex:1; background:var(--in); border:none; border-radius:20px; padding:11px 16px; color:var(--txt); font-size:14px; outline:none; }
+  .foot button { background:#25d366; border:none; width:42px; height:42px; border-radius:50%; color:#053; font-size:18px; cursor:pointer; }
+  .quick { padding:8px 14px; display:flex; gap:7px; flex-wrap:wrap; background:var(--wa-bg); max-height:130px; overflow:auto; }
+  .quick button { background:#ffffff12; border:1px solid #ffffff22; color:#cfe0e3; font-size:12px; padding:6px 12px; border-radius:16px; cursor:pointer; }
+  .quick button:hover { background:#cee98822; border-color:var(--lima); }
+</style>
+</head>
+<body>
+
+<div class="pitch">
+  <span class="dot"></span> <b style="color:#cee988;letter-spacing:1px">GUELUX · DEMO</b>
+  <h1>Así respondería el WhatsApp de tu restaurante</h1>
+  <p>En pleno servicio entra <span class="b">"¿tenés mesa para hoy? ¿hacen delivery? ¿cuál es el menú?"</span> — y si no contestás, la reserva se va. Acá responde al toque, 24/7.</p>
+  <p>Escribí como si fueras un cliente, o tocá un botón. No inventa: si no tiene el dato, deriva a una persona.</p>
+  <a class="cta" href="https://wa.me/4367846548939?text=Hola%2C%20vengo%20de%20guelux.com%2Fgastronomia%20y%20quiero%20probar%20el%20agente%20para%20mi%20restaurante" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Probá el agente con tu negocio
+  </a>
+  <br><a class="cta2" href="/#planes">Ver los planes de Guelux →</a>
+  <p style="margin-top:16px"><small>Demostración. Menú, horarios y zonas de delivery se cargan con los datos reales de tu local en la implementación.</small></p>
+</div>
+
+<div class="phone">
+  <div class="head">
+    <div class="avatar">🍽️</div>
+    <div>
+      <div class="name">Tu Restaurante</div>
+      <div class="status"><b>en línea</b> · responde al instante</div>
+    </div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quick"></div>
+  <div class="foot">
+    <input id="inp" placeholder="Escribí un mensaje" autocomplete="off">
+    <button onclick="enviar()">➤</button>
+  </div>
+</div>
+
+<script>
+const chat=document.getElementById('chat'), typing=document.getElementById('typing'), inp=document.getElementById('inp'), quick=document.getElementById('quick');
+
+const HORARIOS = 'Abrimos de martes a domingo de 20 a 00 hs. Los lunes cerramos. ¿Querés que te reserve una mesa?';
+const PLATOS = ['Milanesa napolitana con papas rústicas','Ojo de bife (300g) con guarnición','Sorrentinos de jamón y mozzarella','Provoleta a la parrilla','Flan casero con dulce de leche'];
+const DELIVERY = 'Sí, hacemos delivery 🛵 por PedidosYa y también directo por acá dentro de CABA. El pedido mínimo es $8.000. ¿Querés ver el menú?';
+
+let S;
+function reset(){ S={ paso:'inicio' }; }
+reset();
+function hora(){ const d=new Date(); return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'); }
+function burbuja(txt,cls){ const b=document.createElement('div'); b.className='bubble '+cls; b.innerHTML=txt+'<span class="t">'+hora()+(cls==='out'?' ✓✓':'')+'</span>'; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function bot(txt,delay=780){ typing.style.display='block'; chat.scrollTop=chat.scrollHeight; return new Promise(r=>setTimeout(()=>{ typing.style.display='none'; burbuja(txt,'in'); r(); }, delay)); }
+function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
+const QUICK_INICIO = ['¿Tienen mesa para hoy?','Ver el menú','¿Hacen delivery?','Horarios'];
+
+async function responder(m){
+  const t=m.toLowerCase().trim();
+  if(/(empezar de nuevo|reiniciar|de cero)/.test(t)){ reset(); await bot('¡Listo! 🙂 ¿Querés reservar una mesa, ver el menú o pedir delivery?'); setQuick(QUICK_INICIO); return; }
+  if(/^(hola|buenas|buen d[ií]a|buenas noches|hey)\b/.test(t) && S.paso==='inicio'){ await bot('¡Hola! 👋 Bienvenido/a. ¿Querés reservar una mesa, ver la carta o pedir delivery?'); setQuick(QUICK_INICIO); return; }
+
+  if(/(mesa|reserv|lugar|para hoy|para ma[ñn]ana|personas|somos)/.test(t)){ S.paso='reserva'; await bot('¡Genial! 🗓️ Decime para qué día, a qué hora y cuántas personas, y te reservo. ¿Para cuándo sería?'); setQuick(['Hoy a las 21','Para 4 personas','El sábado a la noche']); return; }
+  if(/(men[uú]|carta|plato|com[eé]r|qu[eé] tienen|especialidad|recomend)/.test(t)){ await bot('Algunos de nuestros platos 🍽️\n\n• '+PLATOS.join('\n• ')+'\n\n¿Querés la carta completa o te reservo una mesa?'); setQuick(['Reservar una mesa','¿Hacen delivery?']); return; }
+  if(/(delivery|env[ií]o|pedido|para llevar|take away|a domicilio)/.test(t)){ await bot(DELIVERY); setQuick(['Ver el menú','Reservar una mesa']); return; }
+  if(/(horario|abren|abierto|hasta qu[eé] hora|a qu[eé] hora|cerrado|lunes)/.test(t)){ await bot(HORARIOS); setQuick(QUICK_INICIO); return; }
+  if(/(d[oó]nde|direcci|ubicaci|c[oó]mo llego|estacion)/.test(t)){ await bot('Estamos en pleno CABA, con fácil acceso 📍 Te paso la dirección exacta por acá. ¿Te reservo una mesa?'); setQuick(['Reservar una mesa','Ver el menú']); return; }
+  if(/(precio|cu[aá]nto sale|cubierto|valor)/.test(t)){ await bot('El ticket promedio ronda los $15.000 por persona 💵 ¿Querés ver el menú o reservar?'); setQuick(['Ver el menú','Reservar una mesa']); return; }
+  if(S.paso==='reserva' && /(hoy|ma[ñn]ana|s[aá]bado|domingo|viernes|persona|:|hs|noche|\d)/.test(t)){ S.paso='cierre'; await bot('¡Perfecto! 🙌 Te tomo la reserva y te confirmo en un ratito con el equipo. Cualquier cambio me escribís por acá. ¡Te esperamos!'); setQuick(['Gracias','Ver el menú']); return; }
+  if(S.paso==='cierre' && /(gracias|dale|listo|perfecto|genial|ok|buen[ií]simo)/.test(t)){ await bot('¡A vos! 🙌 Cualquier cosa estoy 24/7 por acá. ¡Buen día!'); setQuick(['Reservar otra mesa']); return; }
+
+  await bot('Buena pregunta 🙂 Ese dato puntual no lo tengo cargado en esta demo, pero conectado a la info real de tu local lo respondo al toque. Probá con: "¿tienen mesa para hoy?", "ver el menú", "¿hacen delivery?" o "horarios".');
+  setQuick(QUICK_INICIO);
+}
+
+async function enviar(){ const m=inp.value.trim(); if(!m) return; burbuja(m,'out'); inp.value=''; await responder(m); }
+inp.addEventListener('keydown',e=>{ if(e.key==='Enter') enviar(); });
+(async()=>{ await bot('¡Hola! 👋 Soy el asistente del restaurante. Preguntame por reservas, el menú, delivery u horarios. ¿En qué te ayudo?', 400); setQuick(QUICK_INICIO); })();
+</script>
+</body>
+</html>
