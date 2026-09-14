@@ -657,6 +657,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 @media (max-width: 520px) {
   .process-steps { grid-template-columns: 1fr; gap: 2rem; }
-  .hero-title { font-size: clamp(2.4rem, 12vw, 4rem); }
+  .hero-title { font-size: clamp(1.85rem, 9vw, 3.3rem); }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
