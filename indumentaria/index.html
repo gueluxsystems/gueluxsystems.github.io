@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atención por WhatsApp para marcas de ropa | Guelux</title>
+<meta name="description" content="Así atendería el WhatsApp de tu marca de ropa: un agente que pregunta para entender qué busca la clienta, recomienda la prenda por su tela y su calce, y responde talles, stock, envíos y pagos. 24/7. Probá el agente." />
+<meta name="keywords" content="atención WhatsApp indumentaria, chatbot marca de ropa, agente IA moda, responder consultas talles stock, IA para tiendas de ropa, no perder ventas WhatsApp" />
+<link rel="canonical" href="https://guelux.com/indumentaria/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#0a343d" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Guelux" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Atención por WhatsApp para marcas de ropa | Guelux" />
+<meta property="og:description" content="Un agente que atiende tu WhatsApp como tu mejor vendedora: pregunta, recomienda por ocasión y talle, y recién ahí habla de precio y envío. Probá el agente." />
+<meta property="og:url" content="https://guelux.com/indumentaria/" />
+<meta property="og:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atención por WhatsApp para marcas de ropa | Guelux" />
+<meta name="twitter:description" content="Un agente que atiende tu WhatsApp como tu mejor vendedora: pregunta, recomienda por ocasión y talle, y recién ahí habla de precio y envío. Probá el agente." />
+<meta name="twitter:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Service","@id":"https://guelux.com/indumentaria/#service","name":"Atención por WhatsApp para marcas de ropa","serviceType":"Agente de IA para atención y venta de indumentaria por WhatsApp","provider":{"@type":"Organization","name":"Guelux","url":"https://guelux.com/"},"areaServed":"AR","description":"Un agente de IA que atiende el WhatsApp de tu marca de ropa 24/7 como tu mejor vendedora: pregunta para entender qué busca la clienta, le recomienda la prenda por su tela y su calce, responde talles, stock, envíos y pagos, toma el pedido con tu catálogo real, y deriva a una asesora cuando hace falta."},
+ {"@type":"FAQPage","@id":"https://guelux.com/indumentaria/#faq","mainEntity":[
+   {"@type":"Question","name":"¿Sirve para una marca de ropa?","acceptedAnswer":{"@type":"Answer","text":"Sí. El rubro vive del WhatsApp y del DM: talles, stock, envíos y cambios. El agente atiende al instante, recomienda por ocasión y talle, y toma el pedido, con tu catálogo real."}},
+   {"@type":"Question","name":"¿Inventa datos de las prendas?","acceptedAnswer":{"@type":"Answer","text":"No. Responde solo con lo que cargás (talles, colores, precios, stock, envíos). Si no tiene el dato, no lo inventa: toma los datos de la clienta y la deriva a una asesora."}},
+   {"@type":"Question","name":"¿Cómo ayuda a vender más?","acceptedAnswer":{"@type":"Answer","text":"La mayoría de las consultas de talle y stock llegan fuera de horario. Si tardás en responder, la clienta compra en otra marca. El agente contesta al toque, asesora y ayuda a cerrar la venta."}}
+ ]}
+]}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --wa-bg:#0b141a; --wa-panel:#111b21; --in:#202c33; --out:#005c4b; --txt:#e9edef; --teal:#115361; --lima:#cee988; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0a343d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; gap:40px; flex-wrap:wrap; }
+  .pitch { max-width:340px; color:#cfe0e3; }
+  .pitch .dot{width:18px;height:18px;background:var(--lima);border-radius:50%;display:inline-block;vertical-align:middle}
+  .pitch h1{color:#fff;font-size:30px;font-weight:800;line-height:1.15;margin:14px 0}
+  .pitch p{font-size:16px;line-height:1.6;color:#a7c0c4;margin-bottom:14px}
+  .pitch .b{color:var(--lima);font-weight:700}
+  .pitch small{color:#6f8a8f;font-size:13px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#07120b;font-weight:700;font-size:15px;padding:13px 20px;border-radius:9999px;text-decoration:none;margin-top:6px;box-shadow:0 10px 28px -8px #0008}
+  .cta:hover{opacity:.92}
+  .cta2{display:inline-block;color:var(--lima);font-weight:600;font-size:14px;text-decoration:none;margin-top:14px;border-bottom:1px solid #cee98855}
+  .phone { width:380px; height:760px; background:var(--wa-bg); border-radius:30px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px #0006; border:8px solid #1c2b32; }
+  .head { background:var(--wa-panel); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #ffffff10; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#115361,#1a7d8a); display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .head .name { color:var(--txt); font-weight:700; font-size:16px; }
+  .head .status { color:#8696a0; font-size:12px; }
+  .head .status b { color:#25d366; }
+  .chat { flex:1; overflow-y:auto; padding:18px 14px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { max-width:82%; padding:8px 12px; border-radius:10px; font-size:14.5px; color:var(--txt); line-height:1.45; position:relative; animation:pop .25s ease; white-space:pre-wrap; }
+  @keyframes pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .in { background:var(--in); align-self:flex-start; border-top-left-radius:2px; }
+  .out { background:var(--out); align-self:flex-end; border-top-right-radius:2px; }
+  .t { font-size:10px; color:#ffffff80; display:block; text-align:right; margin-top:3px; }
+  .typing { align-self:flex-start; background:var(--in); padding:12px 16px; border-radius:10px; display:none; margin:0 14px; }
+  .typing span { display:inline-block; width:7px; height:7px; background:#8696a0; border-radius:50%; margin:0 2px; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+  .foot { background:var(--wa-panel); padding:10px 12px; display:flex; gap:8px; align-items:center; }
+  .foot input { flex:1; background:var(--in); border:none; border-radius:20px; padding:11px 16px; color:var(--txt); font-size:14px; outline:none; }
+  .foot button { background:#25d366; border:none; width:42px; height:42px; border-radius:50%; color:#053; font-size:18px; cursor:pointer; }
+  .quick { padding:8px 14px; display:flex; gap:7px; flex-wrap:wrap; background:var(--wa-bg); max-height:130px; overflow:auto; }
+  .quick button { background:#ffffff12; border:1px solid #ffffff22; color:#cfe0e3; font-size:12px; padding:6px 12px; border-radius:16px; cursor:pointer; }
+  .quick button:hover { background:#cee98822; border-color:var(--lima); }
+</style>
+</head>
+<body>
+
+<div class="pitch">
+  <span class="dot"></span> <b style="color:#cee988;letter-spacing:1px">GUELUX · DEMO</b>
+  <h1>Así atendería el WhatsApp de tu marca de ropa</h1>
+  <p>No es un bot que tira un catálogo. Atiende <span class="b">como tu mejor vendedora</span>: te pregunta qué buscás y para qué ocasión, te enamora de la prenda por su tela y su calce, y recién ahí habla de precio, talles y envío. Al instante, 24/7.</p>
+  <p>Escribí como si fueras una clienta, o tocá un botón. No inventa: si no tiene el dato, deriva a una asesora.</p>
+  <a class="cta" href="https://wa.me/4367846548939?text=Hola%2C%20vengo%20de%20guelux.com%2Findumentaria%20y%20quiero%20probar%20el%20agente%20para%20mi%20marca%20de%20ropa" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Probá el agente con tu negocio
+  </a>
+  <br><a class="cta2" href="/#planes">Ver los planes de Guelux →</a>
+  <p style="margin-top:16px"><small>Demostración. Cada agente se arma a medida de tu negocio; esto es una muestra de cómo atendería en tu rubro.</small></p>
+</div>
+
+<div class="phone">
+  <div class="head">
+    <div class="avatar">👗</div>
+    <div>
+      <div class="name">Tu Marca de Ropa</div>
+      <div class="status"><b>en línea</b> · responde al instante</div>
+    </div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quick"></div>
+  <div class="foot">
+    <input id="inp" placeholder="Escribí un mensaje" autocomplete="off">
+    <button onclick="enviar()">➤</button>
+  </div>
+</div>
+
+<script>
+const chat=document.getElementById('chat'), typing=document.getElementById('typing'), inp=document.getElementById('inp'), quick=document.getElementById('quick');
+
+// Por ocasión (fiesta/diario): recomendación que enaltece tela, calce y diseño + precio + talles/envío.
+const PRODS = {
+  fiesta: { reco:'tengo un vestido midi de fiesta que es una divinura: gasa con forrería, cae impecable y estiliza un montón, con un tajo sutil y la espalda descubierta. Es de esos que te sacan mil fotos', nombre:'Vestido midi de fiesta', precio:'Sale $89.900', extra:'Viene del 1 al 4 (equivale a S a XL). Hacemos envíos a todo el país y podés pagar con tarjeta en cuotas o por transferencia' },
+  diario: { reco:'tengo un conjunto de algodón peinado ideal para el día a día: súper cómodo, no se deforma con los lavados y el calce es relajado pero prolijo. Combina con todo y es de los que terminás usando siempre', nombre:'Conjunto de algodón', precio:'Sale $54.900', extra:'Hay del 1 al 4 y en tres colores. Envíos a todo el país, tarjeta en cuotas o transferencia' },
+};
+const ENVIOS = 'Hacemos envíos a todo el país por correo (2 a 5 días hábiles) y en CABA tenemos moto en el día. El costo lo calculo según tu código postal. ¿Querés que te reserve una prenda?';
+
+let S; function reset(){ S={ modo:null, listo:false, paso:'inicio' }; } reset();
+function hora(){ const d=new Date(); return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'); }
+function burbuja(txt,cls){ const b=document.createElement('div'); b.className='bubble '+cls; b.innerHTML=txt+'<span class="t">'+hora()+(cls==='out'?' ✓✓':'')+'</span>'; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function bot(txt,delay=820){ typing.style.display='block'; chat.scrollTop=chat.scrollHeight; return new Promise(r=>setTimeout(()=>{ typing.style.display='none'; burbuja(txt,'in'); r(); }, delay)); }
+function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
+const QUICK_INICIO = ['Algo para una fiesta','Algo para el día a día','¿Hacen envíos?','¿Qué talles tienen?'];
+
+function detectarModo(t){ if(/fiesta|evento|casamiento|salir|noche|gala|c[oó]ctel|cumple|graduaci|egresad/.test(t)) return 'fiesta'; if(/diario|d[ií]a a d[ií]a|c[oó]modo|comodo|trabajo|oficina|casual|uso diario|todos los d[ií]as|entrecasa/.test(t)) return 'diario'; return null; }
+const esPrenda = t => /(vestido|conjunto|pantal[oó]n|remera|camisa|buzo|campera|tapado|saco|blazer|falda|pollera|short|top|body|jean|mono|ropa|prenda|outfit|busco|necesito|quiero)/.test(t);
+
+async function responder(m){
+  const t=m.toLowerCase().trim();
+  if(/(empezar de nuevo|reiniciar|de cero)/.test(t)){ reset(); await bot('¡Dale, arrancamos de nuevo! ¿Buscás algo para una ocasión especial o para el día a día?'); setQuick(QUICK_INICIO); return; }
+
+  const modo=detectarModo(t);
+  const preguntaPrecio=/(precio|cu[aá]nto|sale|vale|cuesta|valor)/.test(t);
+
+  // PRECIO -> con prenda ya recomendada; si no, indago
+  if(preguntaPrecio){
+    if(modo && !S.modo) S.modo=modo;
+    if(S.modo && S.listo){ const p=PRODS[S.modo]; await bot(`${p.precio}. ${p.extra}. ¿Querés que te la reserve? Decime tu talle y coordino el pago y el envío.`); setQuick(['Sí, reservar','Ver otras opciones']); return; }
+    if(S.modo || S.paso==='indagando'){ S.paso='indagando'; await bot('Ya te paso el precio, pero primero contame: ¿es para una ocasión especial o para el día a día? ¿Y qué talle usás? Así te muestro la que mejor te queda.'); return; }
+    await bot('Con gusto te paso los precios, pero contame primero qué buscás: ¿algo para una fiesta o para el día a día?'); setQuick(QUICK_INICIO); return;
+  }
+
+  // Talles
+  if(/(talle|talles|medida|me queda|mi talle|qu[eé] talle)/.test(t)){ await bot('Manejamos del 1 al 4, que equivalen más o menos a S, M, L y XL. Si me decís tu altura y contextura o el talle que usás siempre, te oriento con el que mejor te va. ¿Qué prenda estás mirando?'); setQuick(['Algo para una fiesta','Algo para el día a día']); return; }
+
+  // Envíos
+  if(/(env[ií]o|env[ií]an|envian|mandan|llega|correo|c[oó]digo postal|a domicilio|retiro|moto)/.test(t)){ await bot(ENVIOS); setQuick(['Reservar una prenda','Ver prendas']); return; }
+
+  // Cambios / devoluciones
+  if(/(cambio|cambios|devoluci|no me queda|talle equivocado|si no me entra)/.test(t)){ await bot('Tenés cambios sin problema dentro de los 30 días, con la prenda sin uso y su etiqueta. Si es por talle, te lo resolvemos rápido. ¿Querés que te ayude a elegir el talle justo?'); setQuick(['Sí, ayudame con el talle','Ver prendas']); return; }
+
+  // Nueva búsqueda -> INDAGAR primero
+  if(esPrenda(t) && S.paso!=='indagando' && !S.listo){ S.paso='indagando'; if(modo) S.modo=modo; await bot('¡Dale! Contame para qué es: ¿algo para una ocasión especial o para el día a día? ¿Y qué talle usás? Así te muestro lo mejor que tengo.'); setQuick(['Para una fiesta, talle 2','Para el día a día, talle 3']); return; }
+
+  // Indagando -> RECOMENDAR (necesito la ocasión)
+  if(S.paso==='indagando'){
+    if(modo) S.modo=modo;
+    if(!S.modo){ await bot('¿Sería para una ocasión especial o para el día a día? Así te muestro las opciones justas.'); setQuick(['Para una fiesta','Para el día a día']); return; }
+    S.listo=true; S.paso='recomendado';
+    await bot(`Perfecto. Mirá, ${PRODS[S.modo].reco}. ¿Te gusta o preferís que te muestre otras opciones?`);
+    setQuick(['Me gusta, ¿qué precio?','Ver otras opciones','Quiero reservarla']);
+    return;
+  }
+
+  if(/(otra opci|otras opci|ver otr|no me convence|algo distinto|otro color|otro modelo|otro estilo)/.test(t)){ S.paso='indagando'; S.listo=false; await bot('¡Dale! Contame qué te gustaría distinto: ¿otro estilo, otro color, otro presupuesto? Así te busco la mejor opción.'); return; }
+  if(/(reserv|comprar|compra|lo quiero|la quiero|pedido|llevar|c[oó]mo pago|medios de pago|pagar|transferen|tarjeta)/.test(t)){ S.paso='cierre'; await bot('¡Genial! Decime tu talle y tu código postal, y te reservo la prenda y coordino el pago (tarjeta en cuotas o transferencia) y el envío. ¿Qué talle usás?'); setQuick(['Talle 2','Talle 3','Ver otras opciones']); return; }
+  if(/(qu[eé] ten[eé]s|cat[aá]logo|opciones|mostrame|prendas|colecci|novedad)/.test(t)){ await bot('Tengo prendas para ocasiones especiales y para el día a día, en talles del 1 al 4. Contame qué buscás y arrancamos por ahí. ¿Fiesta o día a día?'); setQuick(QUICK_INICIO); return; }
+  if(S.paso==='cierre' && /(gracias|dale|listo|perfecto|genial|ok|talle|[0-9]{4})/.test(t)){ await bot('¡Genial! En un ratito te escribe una asesora para cerrar la compra y el envío. Cualquier cosa estoy 24/7 por acá. ¡Gracias!'); setQuick(['Ver otras opciones']); return; }
+
+  if(/^(hola|buenas|buen d[ií]a|buenas tardes|buenas noches|hey|qu[eé] tal|holis|hi)\b/.test(t)){ await bot('¡Hey! ¿Buscás algo para una ocasión especial o para el día a día? Contame y qué talle usás, y te muestro lo mejor que tengo.'); setQuick(QUICK_INICIO); return; }
+
+  await bot('Muy buena pregunta. Ese dato puntual no lo tengo cargado en esta demo, pero con el catálogo real de tu marca lo respondo al toque. Probá con "algo para una fiesta", "algo para el día a día" o "¿hacen envíos?".');
+  setQuick(QUICK_INICIO);
+}
+
+async function enviar(){ const m=inp.value.trim(); if(!m) return; burbuja(m,'out'); inp.value=''; await responder(m); }
+inp.addEventListener('keydown',e=>{ if(e.key==='Enter') enviar(); });
+(async()=>{ await bot('¡Hola! ¿Cómo andás? Soy quien atiende la tienda. ¿Estás buscando algo para una ocasión especial o para el día a día? Contame y te doy una mano.', 400); setQuick(QUICK_INICIO); })();
+</script>
+</body>
+</html>
