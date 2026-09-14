@@ -135,8 +135,8 @@ async function responder(m){
     await bot('Con gusto te paso los precios, pero contame primero qué buscás: ¿algo para una fiesta o para el día a día?'); setQuick(QUICK_INICIO); return;
   }
 
-  // Talles
-  if(/(talle|talles|medida|me queda|mi talle|qu[eé] talle)/.test(t)){ await bot('Manejamos del 1 al 4, que equivalen más o menos a S, M, L y XL. Si me decís tu altura y contextura o el talle que usás siempre, te oriento con el que mejor te va. ¿Qué prenda estás mirando?'); setQuick(['Algo para una fiesta','Algo para el día a día']); return; }
+  // Talles (no cuando ya estoy indagando para recomendar: ahí el talle avanza el flujo)
+  if(/(talle|talles|medida|me queda|mi talle|qu[eé] talle)/.test(t) && S.paso!=='indagando'){ await bot('Manejamos del 1 al 4, que equivalen más o menos a S, M, L y XL. Si me decís tu altura y contextura o el talle que usás siempre, te oriento con el que mejor te va. ¿Qué prenda estás mirando?'); setQuick(['Algo para una fiesta','Algo para el día a día']); return; }
 
   // Envíos
   if(/(env[ií]o|env[ií]an|envian|mandan|llega|correo|c[oó]digo postal|a domicilio|retiro|moto)/.test(t)){ await bot(ENVIOS); setQuick(['Reservar una prenda','Ver prendas']); return; }
@@ -144,8 +144,13 @@ async function responder(m){
   // Cambios / devoluciones
   if(/(cambio|cambios|devoluci|no me queda|talle equivocado|si no me entra)/.test(t)){ await bot('Tenés cambios sin problema dentro de los 30 días, con la prenda sin uso y su etiqueta. Si es por talle, te lo resolvemos rápido. ¿Querés que te ayude a elegir el talle justo?'); setQuick(['Sí, ayudame con el talle','Ver prendas']); return; }
 
-  // Nueva búsqueda -> INDAGAR primero
-  if(esPrenda(t) && S.paso!=='indagando' && !S.listo){ S.paso='indagando'; if(modo) S.modo=modo; await bot('¡Dale! Contame para qué es: ¿algo para una ocasión especial o para el día a día? ¿Y qué talle usás? Así te muestro lo mejor que tengo.'); setQuick(['Para una fiesta, talle 2','Para el día a día, talle 3']); return; }
+  // Nueva búsqueda -> INDAGAR primero (si ya sé la ocasión, pregunto solo el talle)
+  if((esPrenda(t) || modo) && S.paso!=='indagando' && !S.listo){
+    S.paso='indagando';
+    if(modo){ S.modo=modo; await bot('¡Buenísimo! ¿Qué talle usás (del 1 al 4)? Con eso te muestro lo que mejor te va.'); setQuick(['Talle 1 o 2','Talle 3 o 4','Mostrame igual']); }
+    else { await bot('¡Dale! Contame para qué es: ¿algo para una ocasión especial o para el día a día? ¿Y qué talle usás? Así te muestro lo mejor que tengo.'); setQuick(['Para una fiesta, talle 2','Para el día a día, talle 3']); }
+    return;
+  }
 
   // Indagando -> RECOMENDAR (necesito la ocasión)
   if(S.paso==='indagando'){
