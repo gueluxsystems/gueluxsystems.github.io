@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atención por WhatsApp para hoteles y alojamientos | Guelux</title>
+<meta name="description" content="Así atendería el WhatsApp de tu hotel: un agente que responde disponibilidad, tarifas y check-in al instante, incluso cuando no hay nadie en recepción. Probá el agente." />
+<meta name="keywords" content="atención WhatsApp hotel, chatbot hotelería, reservas por WhatsApp hotel, agente IA hotel, responder consultas de disponibilidad, hotel boutique atención 24 7" />
+<link rel="canonical" href="https://guelux.com/hoteleria/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#0a343d" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Guelux" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Atención por WhatsApp para hoteles | Guelux" />
+<meta property="og:description" content="Un agente que responde disponibilidad, tarifas y check-in al instante, incluso cuando no hay nadie en recepción. Probá el agente." />
+<meta property="og:url" content="https://guelux.com/hoteleria/" />
+<meta property="og:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atención por WhatsApp para hoteles | Guelux" />
+<meta name="twitter:description" content="Responde disponibilidad, tarifas y check-in al instante, aunque no haya nadie en recepción. Probá el agente." />
+<meta name="twitter:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Service","@id":"https://guelux.com/hoteleria/#service","name":"Atención por WhatsApp para hoteles y alojamientos","serviceType":"Agente de IA para reservas y atención por WhatsApp en hotelería","provider":{"@type":"Organization","name":"Guelux","url":"https://guelux.com/"},"areaServed":"AR","description":"Un agente de IA que atiende el WhatsApp de tu hotel las 24 horas: responde disponibilidad, tarifas, tipos de habitación, check-in y servicios con la info real del hotel, toma la reserva y deriva a recepción cuando hace falta."},
+ {"@type":"FAQPage","@id":"https://guelux.com/hoteleria/#faq","mainEntity":[
+   {"@type":"Question","name":"¿Sirve para un hotel boutique o un alojamiento chico?","acceptedAnswer":{"@type":"Answer","text":"Sí. Es donde más se nota: en hoteles chicos la recepción no está las 24 horas, y las consultas de disponibilidad que llegan de noche o el fin de semana quedan sin responder hasta el otro día."}},
+   {"@type":"Question","name":"¿Inventa tarifas o disponibilidad?","acceptedAnswer":{"@type":"Answer","text":"No. Responde solo con lo que cargás: habitaciones, tarifas, políticas y horarios. Si no tiene el dato, no lo inventa: toma los datos del huésped y deriva a recepción."}},
+   {"@type":"Question","name":"¿Cómo ayuda a no perder reservas?","acceptedAnswer":{"@type":"Answer","text":"La mayoría de las consultas de alojamiento se resuelven con el primero que contesta. Si la persona pregunta a las 11 de la noche y le respondés al otro día, ya reservó en otro lado. El agente contesta al instante, siempre."}}
+ ]}
+]}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --wa-bg:#0b141a; --wa-panel:#111b21; --in:#202c33; --out:#005c4b; --txt:#e9edef; --teal:#115361; --lima:#cee988; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0a343d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; gap:40px; flex-wrap:wrap; }
+  .pitch { max-width:340px; color:#cfe0e3; }
+  .pitch .dot{width:18px;height:18px;background:var(--lima);border-radius:50%;display:inline-block;vertical-align:middle}
+  .pitch h1{color:#fff;font-size:30px;font-weight:800;line-height:1.15;margin:14px 0}
+  .pitch p{font-size:16px;line-height:1.6;color:#a7c0c4;margin-bottom:14px}
+  .pitch .b{color:var(--lima);font-weight:700}
+  .pitch small{color:#6f8a8f;font-size:13px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#07120b;font-weight:700;font-size:15px;padding:13px 20px;border-radius:9999px;text-decoration:none;margin-top:6px;box-shadow:0 10px 28px -8px #0008}
+  .cta:hover{opacity:.92}
+  .cta2{display:inline-block;color:var(--lima);font-weight:600;font-size:14px;text-decoration:none;margin-top:14px;border-bottom:1px solid #cee98855}
+  .phone { width:380px; height:760px; background:var(--wa-bg); border-radius:30px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px #0006; border:8px solid #1c2b32; }
+  .head { background:var(--wa-panel); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #ffffff10; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#115361,#1a7d8a); display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .head .name { color:var(--txt); font-weight:700; font-size:16px; }
+  .head .status { color:#8696a0; font-size:12px; }
+  .head .status b { color:#25d366; }
+  .chat { flex:1; overflow-y:auto; padding:18px 14px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { max-width:82%; padding:8px 12px; border-radius:10px; font-size:14.5px; color:var(--txt); line-height:1.45; position:relative; animation:pop .25s ease; white-space:pre-wrap; }
+  @keyframes pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .in { background:var(--in); align-self:flex-start; border-top-left-radius:2px; }
+  .out { background:var(--out); align-self:flex-end; border-top-right-radius:2px; }
+  .t { font-size:10px; color:#ffffff80; display:block; text-align:right; margin-top:3px; }
+  .typing { align-self:flex-start; background:var(--in); padding:12px 16px; border-radius:10px; display:none; margin:0 14px; }
+  .typing span { display:inline-block; width:7px; height:7px; background:#8696a0; border-radius:50%; margin:0 2px; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+  .foot { background:var(--wa-panel); padding:10px 12px; display:flex; gap:8px; align-items:center; }
+  .foot input { flex:1; background:var(--in); border:none; border-radius:20px; padding:11px 16px; color:var(--txt); font-size:14px; outline:none; }
+  .foot button { background:#25d366; border:none; width:42px; height:42px; border-radius:50%; color:#053; font-size:18px; cursor:pointer; }
+  .quick { padding:8px 14px; display:flex; gap:7px; flex-wrap:wrap; background:var(--wa-bg); max-height:130px; overflow:auto; }
+  .quick button { background:#ffffff12; border:1px solid #ffffff22; color:#cfe0e3; font-size:12px; padding:6px 12px; border-radius:16px; cursor:pointer; }
+  .quick button:hover { background:#cee98822; border-color:var(--lima); }
+</style>
+</head>
+<body>
+
+<div class="pitch">
+  <span class="dot"></span> <b style="color:#cee988;letter-spacing:1px">GUELUX · DEMO</b>
+  <h1>Así atendería el WhatsApp de tu hotel</h1>
+  <p>La consulta de las <span class="b">11 de la noche</span> no espera a que llegue la recepcionista. Responde disponibilidad, tarifas y check-in al instante, con la info real del hotel.</p>
+  <p>Escribí como si fueras alguien buscando alojamiento, o tocá un botón. No inventa: si no tiene el dato, deriva a recepción.</p>
+  <a class="cta" href="https://wa.me/4367846548939?text=Hola%2C%20vengo%20de%20guelux.com%2Fhoteleria%20y%20quiero%20probar%20el%20agente%20para%20mi%20hotel" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Probá el agente con tu hotel
+  </a>
+  <br><a class="cta2" href="/#planes">Ver los planes de Guelux →</a>
+  <p style="margin-top:16px"><small>Demostración. Cada agente se arma a medida de tu negocio; esto es una muestra de cómo atendería en tu rubro.</small></p>
+</div>
+
+<div class="phone">
+  <div class="head">
+    <div class="avatar">🏨</div>
+    <div>
+      <div class="name">Tu Hotel</div>
+      <div class="status"><b>en línea</b> · responde 24 hs</div>
+    </div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quick"></div>
+  <div class="foot">
+    <input id="inp" placeholder="Escribí un mensaje" autocomplete="off">
+    <button onclick="enviar()">➤</button>
+  </div>
+</div>
+
+<script>
+const chat=document.getElementById('chat'), typing=document.getElementById('typing'), inp=document.getElementById('inp'), quick=document.getElementById('quick');
+
+const HAB = {
+  doble:   'la Doble Superior es ideal: cama queen, baño privado, aire y smart TV. Sale $95.000 la noche con desayuno incluido',
+  matri:   'les va perfecta la Matrimonial con vista: cama king, baño privado y un ventanal lindísimo. Sale $120.000 la noche con desayuno',
+  familiar:'la Familiar les queda cómoda: una cama matrimonial más dos individuales, baño privado y espacio de sobra. Sale $150.000 la noche con desayuno',
+  single:  'la Single es justo lo que buscás: cama individual, baño privado y escritorio para trabajar. Sale $70.000 la noche con desayuno',
+  general: 'tenemos desde Single hasta Familiar, todas con baño privado, aire y desayuno incluido. Las tarifas van de $70.000 a $150.000 la noche según la categoría',
+};
+const CHECK = 'El check-in es desde las 14 hs y el check-out hasta las 11 hs. Si llegás antes o te querés ir más tarde, avisanos y vemos cómo acomodarlo.';
+const DESAYUNO = 'Sí, el desayuno está incluido en todas las habitaciones. Es buffet, de 7 a 10:30 hs, con opciones dulces y saladas. También tenemos opciones sin TACC avisando antes.';
+const SERVICIOS = 'Todas las habitaciones tienen wifi, aire acondicionado, smart TV y baño privado. El hotel suma recepción, guarda de equipaje y desayuno incluido.';
+
+let S; function reset(){ S={ tipo:null, listo:false, paso:'inicio' }; } reset();
+function hora(){ const d=new Date(); return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'); }
+function burbuja(txt,cls){ const b=document.createElement('div'); b.className='bubble '+cls; b.innerHTML=txt+'<span class="t">'+hora()+(cls==='out'?' ✓✓':'')+'</span>'; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function bot(txt,delay=820){ typing.style.display='block'; chat.scrollTop=chat.scrollHeight; return new Promise(r=>setTimeout(()=>{ typing.style.display='none'; burbuja(txt,'in'); r(); }, delay)); }
+function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
+const QUICK_INICIO = ['¿Tenés disponibilidad?','¿Cuánto sale la noche?','¿El desayuno está incluido?','Horarios de check-in'];
+
+function detectarTipo(t){
+  if(/matrimonial|pareja|luna de miel|king|con mi novi|con mi espos|con mi marido|con mi mujer/.test(t)) return 'matri';
+  if(/familiar|familia|con los chicos|con mis hijos|somos 4|somos cuatro|4 personas/.test(t)) return 'familiar';
+  if(/single|solo|sola|1 persona|una persona|individual|por trabajo|viaje de trabajo/.test(t)) return 'single';
+  if(/doble|somos 2|somos dos|2 personas|dos personas|queen/.test(t)) return 'doble';
+  return null;
+}
+const quiereReservar = t => /(disponib|reserv|habitaci|cuarto|alojar|hospedar|noche|lugar|tienen algo|quedarme|quedarnos|fin de semana|hay lugar)/.test(t);
+
+async function responder(m){
+  const t=m.toLowerCase().trim();
+  if(/(empezar de nuevo|reiniciar|de cero)/.test(t)){ reset(); await bot('¡Dale, arrancamos de nuevo! ¿Buscás disponibilidad para alguna fecha en particular?'); setQuick(QUICK_INICIO); return; }
+
+  const tipo=detectarTipo(t);
+
+  // Consultas puntuales
+  if(/(desayuno|breakfast|incluye comida|media pensi)/.test(t)){ await bot(DESAYUNO); setQuick(['¿Tenés disponibilidad?','¿Cuánto sale la noche?']); return; }
+  if(/(check.?in|check.?out|horario|a qu[eé] hora (puedo )?(entrar|llegar|salir)|equipaje)/.test(t)){ await bot(CHECK); setQuick(['¿Tenés disponibilidad?','¿Qué servicios tiene?']); return; }
+  // Servicios que este hotel NO tiene cargados: no inventa, deriva a recepción
+  if(/(cochera|estacion|garage|garaje|pileta|piscina|gimnasio|spa|mascota|perro|gato)/.test(t)){ await bot('Ese dato puntual prefiero no arriesgarlo. Se lo paso a recepción y te confirman en un rato por acá, así no te quedás con la duda. Mientras tanto, ¿querés que te vaya buscando disponibilidad?'); setQuick(['¿Tenés disponibilidad?','¿Qué servicios tiene?']); return; }
+  if(/(wifi|aire|tv|servicio|amenit|incluye)/.test(t)){ await bot(SERVICIOS); setQuick(['¿Tenés disponibilidad?','¿Cuánto sale la noche?']); return; }
+  if(/(ubicaci|d[oó]nde (est|quedan|queda)|direcci|c[oó]mo llego|cerca de)/.test(t)){ await bot('Estamos en pleno CABA, a pasos del subte y con todo a mano para moverte. Te paso la dirección exacta por acá cuando confirmes. ¿Buscás para alguna fecha puntual?'); setQuick(['¿Tenés disponibilidad?','Horarios de check-in']); return; }
+  if(/(cancel|pol[ií]tica|seña|anticipo|pago|transferencia|tarjeta)/.test(t)){ await bot('Se reserva con una seña del 30% por transferencia y el resto se abona al llegar. Cancelando con más de 48 hs de anticipación te devolvemos la seña completa. ¿Te busco disponibilidad?'); setQuick(['¿Tenés disponibilidad?','¿Cuánto sale la noche?']); return; }
+
+  // Venía indagando y el huésped respondió -> RECOMENDAR habitación
+  if(S.paso==='indagando'){ S.listo=true; S.paso='recomendado'; const h=HAB[tipo||'general']; await bot(`¡Buenísimo! Para eso ${h}. ¿Te la reservo así te la dejo guardada?`); setQuick(['Sí, reservá','Ver otras habitaciones','¿El desayuno está incluido?']); return; }
+
+  // Precio suelto antes de indagar
+  if(/(precio|cu[aá]nto sale|cu[aá]nto est[aá]|tarifa|valor|cu[aá]nto es)/.test(t) && S.paso!=='recomendado'){ S.paso='indagando'; await bot('Te paso tarifas al toque. ¿Para qué fechas y cuántas personas serían? Así te digo la habitación exacta y el precio final.'); setQuick(['Somos 2','Somos una familia','Viajo solo']); return; }
+
+  // Quiere reservar -> INDAGAR primero
+  if(quiereReservar(t) && S.paso!=='recomendado'){ S.paso='indagando'; await bot('¡Dale! ¿Para qué fechas y cuántas personas serían? Con eso te digo qué tenemos libre y la tarifa.'); setQuick(['Somos 2, este finde','Familia con chicos','Viajo solo por trabajo']); return; }
+
+  // Ver habitaciones
+  if(/(habitacion|cuarto|categor[ií]a|qu[eé] tipo|opciones|ver fotos)/.test(t)){ await bot('Tenemos Single, Doble Superior, Matrimonial con vista y Familiar, todas con baño privado, aire y desayuno incluido. Contame para cuántos y qué fecha y te digo cuál te conviene.'); setQuick(['Somos 2','Somos una familia','Viajo solo']); return; }
+
+  // Cerrar reserva
+  if(/(reserv|dale|s[ií]|guardar|guardame|tomala|coordin|confirm)/.test(t) && (S.paso==='recomendado'||S.paso==='reserva')){ S.paso='cierre'; await bot('¡Perfecto! Decime a nombre de quién y un teléfono de contacto, y te paso los datos para la seña. Recepción te confirma la reserva en un rato. ¡Te esperamos!'); setQuick(['Listo, gracias','¿El desayuno está incluido?']); return; }
+  if(S.paso==='cierre' && /(gracias|dale|listo|perfecto|genial|ok)/.test(t)){ await bot('¡A vos! Cualquier cosa estoy por acá las 24 hs. ¡Nos vemos!'); setQuick(['Consultar otra fecha']); return; }
+
+  if(/^(hola|buenas|buen d[ií]a|buenas noches|buenas tardes|hey|qu[eé] tal|holis|hi)\b/.test(t)){ await bot('¡Hola! ¿Buscás alojamiento? Contame para qué fechas y cuántas personas y te digo qué tenemos disponible.'); setQuick(QUICK_INICIO); return; }
+
+  await bot('Muy buena pregunta. Ese dato puntual no lo tengo cargado en esta demo, pero con la info real de tu hotel lo respondo al toque. Probá con "¿tenés disponibilidad?", "¿cuánto sale la noche?" o "horarios de check-in".');
+  setQuick(QUICK_INICIO);
+}
+
+async function enviar(){ const m=inp.value.trim(); if(!m) return; burbuja(m,'out'); inp.value=''; await responder(m); }
+inp.addEventListener('keydown',e=>{ if(e.key==='Enter') enviar(); });
+(async()=>{ await bot('¡Hola! ¿Cómo andás? Soy quien atiende el hotel. ¿Buscás disponibilidad para alguna fecha? Contame para cuántas personas y te ayudo.', 400); setQuick(QUICK_INICIO); })();
+</script>
+</body>
+</html>
