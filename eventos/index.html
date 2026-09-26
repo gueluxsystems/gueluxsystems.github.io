@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atención por WhatsApp para catering y eventos | Guelux</title>
+<meta name="description" content="Así atendería el WhatsApp de tu servicio de catering o barra de café para eventos: un agente que entiende el evento, toma todos los datos para cotizar y no deja ninguna consulta sin responder. 24/7. Probá el agente." />
+<meta name="keywords" content="atención WhatsApp catering, chatbot eventos, cotizaciones catering, barra de café eventos, agente IA catering, responder consultas eventos automático" />
+<link rel="canonical" href="https://guelux.com/eventos/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#0a343d" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Guelux" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Atención por WhatsApp para catering y eventos | Guelux" />
+<meta property="og:description" content="Un agente que entiende el evento, toma todos los datos para cotizar y no deja ninguna consulta sin responder. Probá el agente." />
+<meta property="og:url" content="https://guelux.com/eventos/" />
+<meta property="og:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atención por WhatsApp para catering y eventos | Guelux" />
+<meta name="twitter:description" content="Un agente que entiende el evento, toma los datos para cotizar y no pierde ninguna consulta. Probá el agente." />
+<meta name="twitter:image" content="https://guelux-os-web.vercel.app/guelux-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Service","@id":"https://guelux.com/eventos/#service","name":"Atención por WhatsApp para catering y eventos","serviceType":"Agente de IA para consultas y cotizaciones de eventos por WhatsApp","provider":{"@type":"Organization","name":"Guelux","url":"https://guelux.com/"},"areaServed":"AR","description":"Un agente de IA que atiende el WhatsApp de tu servicio de catering o barra de café para eventos 24/7: entiende de qué evento se trata, toma todos los datos para cotizar (fecha, cantidad de personas, lugar), responde qué incluye cada opción y deja la consulta lista para que armes la propuesta a medida, sin que se te enfríe ni se te escape ningún cliente."},
+ {"@type":"FAQPage","@id":"https://guelux.com/eventos/#faq","mainEntity":[
+   {"@type":"Question","name":"¿Sirve para un servicio de catering o una barra de café para eventos?","acceptedAnswer":{"@type":"Answer","text":"Sí. El agente entiende de qué evento se trata, toma los datos que necesitás para cotizar (fecha, cantidad de personas, lugar, tipo de servicio) y responde qué incluye cada opción, al instante y 24/7, así ninguna consulta queda sin responder mientras estás en pleno servicio."}},
+   {"@type":"Question","name":"Mis cotizaciones son personalizadas, ¿igual sirve?","acceptedAnswer":{"@type":"Answer","text":"Justamente ahí ayuda más. El agente no inventa un precio final: junta toda la info del evento y la deja lista para que armes la cotización a medida, y mientras tanto mantiene al cliente enganchado en vez de dejarlo esperando entre la consulta y tu presupuesto."}},
+   {"@type":"Question","name":"¿Inventa precios o disponibilidad?","acceptedAnswer":{"@type":"Answer","text":"No. Responde solo con lo que cargás (opciones, rangos orientativos, zonas de cobertura). El precio final y la disponibilidad de fecha los confirmás vos: el agente los deriva a una persona sin arriesgar un dato."}}
+ ]}
+]}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --wa-bg:#0b141a; --wa-panel:#111b21; --in:#202c33; --out:#005c4b; --txt:#e9edef; --teal:#115361; --lima:#cee988; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0a343d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; gap:40px; flex-wrap:wrap; }
+  .pitch { max-width:340px; color:#cfe0e3; }
+  .pitch .dot{width:18px;height:18px;background:var(--lima);border-radius:50%;display:inline-block;vertical-align:middle}
+  .pitch h1{color:#fff;font-size:30px;font-weight:800;line-height:1.15;margin:14px 0}
+  .pitch p{font-size:16px;line-height:1.6;color:#a7c0c4;margin-bottom:14px}
+  .pitch .b{color:var(--lima);font-weight:700}
+  .pitch small{color:#6f8a8f;font-size:13px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#07120b;font-weight:700;font-size:15px;padding:13px 20px;border-radius:9999px;text-decoration:none;margin-top:6px;box-shadow:0 10px 28px -8px #0008}
+  .cta:hover{opacity:.92}
+  .cta2{display:inline-block;color:var(--lima);font-weight:600;font-size:14px;text-decoration:none;margin-top:14px;border-bottom:1px solid #cee98855}
+  .phone { width:380px; height:760px; background:var(--wa-bg); border-radius:30px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px #0006; border:8px solid #1c2b32; }
+  .head { background:var(--wa-panel); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #ffffff10; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#115361,#1a7d8a); display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .head .name { color:var(--txt); font-weight:700; font-size:16px; }
+  .head .status { color:#8696a0; font-size:12px; }
+  .head .status b { color:#25d366; }
+  .chat { flex:1; overflow-y:auto; padding:18px 14px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { max-width:82%; padding:8px 12px; border-radius:10px; font-size:14.5px; color:var(--txt); line-height:1.45; position:relative; animation:pop .25s ease; white-space:pre-wrap; }
+  @keyframes pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .in { background:var(--in); align-self:flex-start; border-top-left-radius:2px; }
+  .out { background:var(--out); align-self:flex-end; border-top-right-radius:2px; }
+  .t { font-size:10px; color:#ffffff80; display:block; text-align:right; margin-top:3px; }
+  .typing { align-self:flex-start; background:var(--in); padding:12px 16px; border-radius:10px; display:none; margin:0 14px; }
+  .typing span { display:inline-block; width:7px; height:7px; background:#8696a0; border-radius:50%; margin:0 2px; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+  .foot { background:var(--wa-panel); padding:10px 12px; display:flex; gap:8px; align-items:center; }
+  .foot input { flex:1; background:var(--in); border:none; border-radius:20px; padding:11px 16px; color:var(--txt); font-size:14px; outline:none; }
+  .foot button { background:#25d366; border:none; width:42px; height:42px; border-radius:50%; color:#053; font-size:18px; cursor:pointer; }
+  .quick { padding:8px 14px; display:flex; gap:7px; flex-wrap:wrap; background:var(--wa-bg); max-height:130px; overflow:auto; }
+  .quick button { background:#ffffff12; border:1px solid #ffffff22; color:#cfe0e3; font-size:12px; padding:6px 12px; border-radius:16px; cursor:pointer; }
+  .quick button:hover { background:#cee98822; border-color:var(--lima); }
+</style>
+</head>
+<body>
+
+<div class="pitch">
+  <span class="dot"></span> <b style="color:#cee988;letter-spacing:1px">GUELUX · DEMO</b>
+  <h1>Así atendería el WhatsApp de tu catering</h1>
+  <p>La consulta de un evento entra <span class="b">cuando estás montando la barra o en pleno servicio</span>. Si no contestás a tiempo, el cliente se va con otro. El agente entiende el evento, toma todos los datos para cotizar y no deja a nadie esperando.</p>
+  <p>Escribí como si fueras alguien pidiendo presupuesto para un evento, o tocá un botón. No inventa precios: junta la info y te la deja lista para tu cotización a medida.</p>
+  <a class="cta" href="https://wa.me/4367846548939?text=Hola%2C%20vengo%20de%20guelux.com%2Feventos%20y%20quiero%20probar%20el%20agente%20para%20mi%20catering" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Probá el agente con tu negocio
+  </a>
+  <br><a class="cta2" href="/#planes">Ver los planes de Guelux →</a>
+  <p style="margin-top:16px"><small>Demostración. Cada agente se arma a medida de tu negocio; esto es una muestra de cómo atendería en tu rubro.</small></p>
+</div>
+
+<div class="phone">
+  <div class="head">
+    <div class="avatar">☕</div>
+    <div>
+      <div class="name">Tu Catering / Barra de Café</div>
+      <div class="status"><b>en línea</b> · responde al instante</div>
+    </div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quick"></div>
+  <div class="foot">
+    <input id="inp" placeholder="Escribí un mensaje" autocomplete="off">
+    <button onclick="enviar()">➤</button>
+  </div>
+</div>
+
+<script>
+const chat=document.getElementById('chat'), typing=document.getElementById('typing'), inp=document.getElementById('inp'), quick=document.getElementById('quick');
+
+// Opciones/paquetes de una barra de café + catering para eventos (rangos orientativos; la cotización final es a medida)
+const PAQUETES = {
+  corporativo: 'para empresas te va genial el Corner de Café de especialidad con barista: café, cortados, capuccinos e infusiones ilimitadas más una mesa dulce con medialunas y budines. Ideal para jornadas, lanzamientos y reuniones',
+  social:      'para casamientos y cumpleaños te arma un ambientazo la Barra Full: café de especialidad, chocolatada, mesa de té e infusiones, con pastelería artesanal. Podés sumar la barra a la mañana o para el after',
+  general:     'trabajamos con Corner de Café (barista + café de especialidad e infusiones) y la Barra Full que suma mesa dulce y pastelería artesanal. Se arma a medida del evento',
+};
+const INCLUYE = 'Cada servicio incluye barista, la máquina y todo el equipamiento, café de especialidad e infusiones, y la ambientación de la barra. La pastelería y los extras se suman según lo que quieras. El armado y desarme corren por nuestra cuenta.';
+const COBERTURA = 'Cubrimos CABA y GBA sin cargo de traslado; más lejos lo cotizamos aparte según la zona. ¿Para qué localidad sería?';
+
+let S; function reset(){ S={ tipo:null, datos:{}, paso:'inicio' }; } reset();
+function hora(){ const d=new Date(); return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'); }
+function burbuja(txt,cls){ const b=document.createElement('div'); b.className='bubble '+cls; b.innerHTML=txt+'<span class="t">'+hora()+(cls==='out'?' ✓✓':'')+'</span>'; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function bot(txt,delay=820){ typing.style.display='block'; chat.scrollTop=chat.scrollHeight; return new Promise(r=>setTimeout(()=>{ typing.style.display='none'; burbuja(txt,'in'); r(); }, delay)); }
+function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
+const QUICK_INICIO = ['Es para una empresa','Es un casamiento','Es un cumpleaños','¿Qué incluye?'];
+
+function detectarTipo(t){
+  if(/(empresa|corporativ|oficina|jornada|lanzamiento|capacitaci|reuni[oó]n|trabajo|laboral|congreso)/.test(t)) return 'corporativo';
+  if(/(casamiento|boda|cumple|cumplea|quince|15|bautismo|comuni[oó]n|fiesta|social|aniversario)/.test(t)) return 'social';
+  return null;
+}
+const quiereCotizar = t => /(evento|cotiz|presupuesto|precio|sale|cu[aá]nto|contrat|servicio|barra|caf[eé]|catering|fecha|para el|organiz)/.test(t);
+
+async function responder(m){
+  const t=m.toLowerCase().trim();
+  if(/(empezar de nuevo|reiniciar|de cero)/.test(t)){ reset(); await bot('¡Dale, arrancamos de nuevo! Contame de tu evento: ¿es para una empresa o algo social (casamiento, cumple)?'); setQuick(QUICK_INICIO); return; }
+
+  const tipo=detectarTipo(t);
+
+  // Servicios que NO tenemos cargados en esta demo: no inventa, deriva
+  if(/(alcohol|barra de tragos|tragos|c[oó]ctel|vino|cerveza|choripan|asado|comida caliente|almuerzo|cena|men[uú] principal)/.test(t)){ await bot('Ese servicio puntual prefiero no arriesgarlo por acá. Se lo paso al equipo y te confirman en un rato, así no te quedás con la duda. Mientras tanto, ¿me contás para cuántas personas y qué fecha sería?'); setQuick(['Somos 50 personas','¿Qué incluye?']); return; }
+
+  // Consultas puntuales
+  if(/(qu[eé] inclu|qu[eé] tiene|qu[eé] trae|con qu[eé] viene|equipamiento)/.test(t)){ await bot(INCLUYE+' ¿Para cuántas personas sería el evento?'); setQuick(['Somos 30','Somos 80','¿Cuánto sale?']); return; }
+  if(/(zona|cobertura|traslado|viaj|localidad|d[oó]nde|hasta d[oó]nde|llegan a)/.test(t)){ await bot(COBERTURA); setQuick(['Es en CABA','Es en GBA','¿Qué incluye?']); return; }
+  if(/(precio|cu[aá]nto sale|valor|cu[aá]nto es|presupuesto|cotiz)/.test(t)){ S.paso='datos'; await bot('Los servicios arrancan desde unos $6.000 por persona y varían según lo que sumes (pastelería, duración, extras). Como cada evento es distinto, te armo la cotización exacta a medida. Para eso contame: ¿qué fecha, cuántas personas y en qué zona sería?'); setQuick(['Ej: 15/11, 60 personas, CABA','¿Qué incluye?']); return; }
+
+  // Ya sabemos el tipo o venía indagando -> recomendar paquete + pedir datos para cotizar
+  if(tipo || S.paso==='indagando'){
+    S.tipo = tipo || S.tipo || 'general';
+    S.paso='datos';
+    await bot(`¡Buenísimo! Contame, ${PAQUETES[S.tipo]}. Para pasarte la propuesta exacta, decime la fecha del evento, cuántas personas y en qué zona es.`);
+    setQuick(['Ej: 20/12, 100 personas, GBA','¿Qué incluye?','¿Cuánto sale?']);
+    return;
+  }
+
+  // Está dando los datos del evento -> capturar y cerrar el hilo hacia cotización a medida
+  if(S.paso==='datos'){
+    S.paso='captura';
+    await bot('¡Genial, gracias! Ya tengo todo para armarte la cotización a medida. Te la preparo con el equipo y te la paso en un rato por acá. ¿A nombre de quién la hago y me dejás un mail o te la mando por este mismo WhatsApp?');
+    setQuick(['Mandámela por acá','Te paso mi mail']);
+    return;
+  }
+  if(S.paso==='captura'){
+    S.paso='cierre';
+    await bot('¡Perfecto! Queda anotado. Te llega la propuesta en breve y cualquier ajuste lo vemos por acá. Gracias por escribirnos, se viene un evento de diez.');
+    setQuick(['Listo, gracias','Tengo otra consulta']);
+    return;
+  }
+
+  // Cierre / saludos
+  if(/(fecha|disponible|tienen libre|agenda)/.test(t)){ await bot('La disponibilidad de la fecha te la confirma el equipo al toque (no quiero arriesgarte un sí sin chequear la agenda). Pasame la fecha y la cantidad de personas y lo verificamos ya.'); setQuick(['Ej: 15/11, 60 personas','¿Qué incluye?']); return; }
+  if(/^(hola|buenas|buen d[ií]a|buenas noches|buenas tardes|hey|qu[eé] tal|holis|hi)\b/.test(t)){ await bot('¡Hola! ¿Cómo andás? Soy quien atiende las consultas de eventos. Contame: ¿es para una empresa o algo social (casamiento, cumple)? Así te recomiendo la mejor opción y te armo el presupuesto.'); setQuick(QUICK_INICIO); return; }
+  if(S.paso==='cierre' && /(gracias|dale|listo|perfecto|genial|ok)/.test(t)){ await bot('¡A vos! Estoy 24/7 por acá para lo que necesites. ¡Un abrazo!'); setQuick(['Organizar otro evento']); return; }
+
+  await bot('Muy buena pregunta. Ese dato puntual no lo tengo cargado en esta demo, pero con la info real de tu negocio lo respondo al toque. Probá contándome de tu evento: tipo, fecha y cuántas personas.');
+  setQuick(QUICK_INICIO);
+}
+
+async function enviar(){ const m=inp.value.trim(); if(!m) return; burbuja(m,'out'); inp.value=''; await responder(m); }
+inp.addEventListener('keydown',e=>{ if(e.key==='Enter') enviar(); });
+(async()=>{ await bot('¡Hola! ¿Cómo andás? Soy quien atiende las consultas de eventos. Contame un poco: ¿es para una empresa o algo social (casamiento, cumple)? Así te recomiendo la mejor opción y te paso el presupuesto.', 400); setQuick(QUICK_INICIO); })();
+</script>
+</body>
+</html>
