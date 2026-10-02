@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo personalizada — Pelloni Donato × Guelux</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<meta name="theme-color" content="#0a343d" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --wa-bg:#0b141a; --wa-panel:#111b21; --in:#202c33; --out:#005c4b; --txt:#e9edef; --teal:#115361; --lima:#cee988; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0a343d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; gap:40px; flex-wrap:wrap; }
+  .pitch { max-width:360px; color:#cfe0e3; }
+  .pitch .dot{width:18px;height:18px;background:var(--lima);border-radius:50%;display:inline-block;vertical-align:middle}
+  .pitch h1{color:#fff;font-size:27px;font-weight:800;line-height:1.2;margin:14px 0}
+  .pitch p{font-size:15.5px;line-height:1.6;color:#a7c0c4;margin-bottom:14px}
+  .pitch .b{color:var(--lima);font-weight:700}
+  .pitch small{color:#6f8a8f;font-size:13px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#07120b;font-weight:700;font-size:15px;padding:13px 20px;border-radius:9999px;text-decoration:none;margin-top:6px;box-shadow:0 10px 28px -8px #0008}
+  .cta:hover{opacity:.92}
+  .modebox{ background:#ffffff0d; border:1px solid #ffffff1c; border-radius:14px; padding:14px; margin:18px 0; }
+  .modebox .lbl{ font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#8fb0b5; margin-bottom:9px; font-weight:700; }
+  .modeswitch{ display:flex; gap:6px; }
+  .modeswitch button{ flex:1; background:#ffffff10; border:1px solid #ffffff22; color:#cfe0e3; font-size:12.5px; font-weight:600; padding:10px 8px; border-radius:9px; cursor:pointer; line-height:1.3; }
+  .modeswitch button.active{ background:var(--lima); color:#0a2a1e; border-color:var(--lima); }
+  .modedesc{ font-size:12px; color:#8fb0b5; margin-top:9px; line-height:1.5; }
+  .phone { width:380px; height:760px; background:var(--wa-bg); border-radius:30px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px #0006; border:8px solid #1c2b32; }
+  .head { background:var(--wa-panel); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #ffffff10; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#115361,#1a7d8a); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; color:#cee988; }
+  .head .name { color:var(--txt); font-weight:700; font-size:16px; }
+  .head .status { color:#8696a0; font-size:12px; }
+  .head .status b { color:#25d366; }
+  .chat { flex:1; overflow-y:auto; padding:18px 14px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { max-width:84%; padding:8px 12px; border-radius:10px; font-size:14.5px; color:var(--txt); line-height:1.45; position:relative; animation:pop .25s ease; white-space:pre-wrap; }
+  @keyframes pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .in { background:var(--in); align-self:flex-start; border-top-left-radius:2px; }
+  .out { background:var(--out); align-self:flex-end; border-top-right-radius:2px; }
+  .sys { align-self:center; background:#ffffff10; color:#9db3b7; font-size:11.5px; padding:5px 12px; border-radius:20px; margin:4px 0; }
+  .t { font-size:10px; color:#ffffff80; display:block; text-align:right; margin-top:3px; }
+  .typing { align-self:flex-start; background:var(--in); padding:12px 16px; border-radius:10px; display:none; margin:0 14px; }
+  .typing span { display:inline-block; width:7px; height:7px; background:#8696a0; border-radius:50%; margin:0 2px; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+  .foot { background:var(--wa-panel); padding:10px 12px; display:flex; gap:8px; align-items:center; }
+  .foot input { flex:1; background:var(--in); border:none; border-radius:20px; padding:11px 16px; color:var(--txt); font-size:14px; outline:none; }
+  .foot button { background:#25d366; border:none; width:42px; height:42px; border-radius:50%; color:#053; font-size:18px; cursor:pointer; }
+  .quick { padding:8px 14px; display:flex; gap:7px; flex-wrap:wrap; background:var(--wa-bg); max-height:130px; overflow:auto; }
+  .quick button { background:#ffffff12; border:1px solid #ffffff22; color:#cfe0e3; font-size:12px; padding:6px 12px; border-radius:16px; cursor:pointer; }
+  .quick button:hover { background:#cee98822; border-color:var(--lima); }
+</style>
+</head>
+<body>
+
+<div class="pitch">
+  <span class="dot"></span> <b style="color:#cee988;letter-spacing:1px">GUELUX · DEMO PRIVADA</b>
+  <h1>Así atendería el WhatsApp de Pelloni Donato</h1>
+  <p>Con tu <span class="b">cartera real</span>: pregunta para entender qué busca el interesado (operación, zona, ambientes), le recomienda el departamento justo, y recién ahí habla de precio. Si no cierra en el momento, <span class="b">hace el seguimiento solo</span>.</p>
+  <p>Probá escribiendo como si fueras un interesado. No inventa nada: solo responde con propiedades reales de tu cartera actual.</p>
+
+  <div class="modebox">
+    <div class="lbl">Cómo cierra la visita</div>
+    <div class="modeswitch">
+      <button id="modeA" class="active" onclick="setMode('comercial')">Deriva a comercial<br><small style="font-weight:400;opacity:.8">vos confirmás el horario</small></button>
+      <button id="modeB" onclick="setMode('auto')">Agenda directo<br><small style="font-weight:400;opacity:.8">el agente la cierra solo</small></button>
+    </div>
+    <div class="modedesc" id="modedesc">El agente toma los datos y te pasa el contacto para que un asesor cierre el horario de la visita.</div>
+  </div>
+
+  <a class="cta" href="https://wa.me/4367846548939?text=Hola%2C%20vengo%20de%20la%20demo%20de%20Pelloni%20Donato%20y%20quiero%20charlar%20sobre%20Guelux" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Hablemos de esto
+  </a>
+  <p style="margin-top:16px"><small>Demo armada con propiedades reales publicadas de Pelloni Donato (Caballito, Belgrano, Pilar, Vicente López). Vista previa — no conectado a su WhatsApp real todavía.</small></p>
+</div>
+
+<div class="phone">
+  <div class="head">
+    <div class="avatar">PD</div>
+    <div>
+      <div class="name">Pelloni Donato</div>
+      <div class="status"><b>en línea</b> · responde al instante</div>
+    </div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quick"></div>
+  <div class="foot">
+    <input id="inp" placeholder="Escribí un mensaje" autocomplete="off">
+    <button onclick="enviar()">➤</button>
+  </div>
+</div>
+
+<script>
+const chat=document.getElementById('chat'), typing=document.getElementById('typing'), inp=document.getElementById('inp'), quick=document.getElementById('quick');
+
+/* ── Cartera REAL de Pelloni Donato (pellonidonato.com.ar, relevado en vivo) ──
+   No se inventa ningún dato: dirección, m², ambientes y precio son los publicados. */
+const DEPTOS = [
+  { id:'1396', op:'venta',    zona:'caballito',      zonaLabel:'Caballito',     amb:3, dorms:2, m2:90,  precio:'U$D 198.000', expensas:'$260.000', estado:'a estrenar', dir:'Eduardo Acevedo N° 100', desc:'amplio, muy luminoso, cocina integrada y a estrenar' , cod:'1396' },
+  { id:'1395', op:'venta',    zona:'caballito',      zonaLabel:'Caballito',     amb:3, dorms:2, m2:72,  precio:'U$D 175.000', expensas:'$220.000', estado:'a estrenar', dir:'Eduardo Acevedo N° 100', desc:'a estrenar, muy prolijo y con buena distribución', cod:'1395' },
+  { id:'1379', op:'venta',    zona:'belgrano',       zonaLabel:'Belgrano',      amb:3, dorms:2, m2:112, precio:'U$D 280.000', expensas:'$285.000', estado:'13 años', dir:'Crisólogo Larralde N° 2700', desc:'dúplex con terraza propia, balcón y cochera — una belleza', cod:'1379' },
+  { id:'1208', op:'venta',    zona:'pilar',          zonaLabel:'Pilar (Complejo One Pilar)', amb:1, dorms:0, m2:32, precio:'U$D 49.500', expensas:null, estado:'a estrenar', dir:'Los Malvones N° 3700', desc:'monoambiente a estrenar, ideal para invertir o para arrancar solo', cod:'1208' },
+  { id:'440',  op:'alquiler', zona:'belgrano',       zonaLabel:'Belgrano',      amb:2, dorms:1, m2:50,  precio:'$1.000.000/mes', expensas:null, estado:'a estrenar', dir:'Av. Monroe N° 2300', desc:'2 ambientes a estrenar, apto profesional', cod:'440' },
+  { id:'1403', op:'alquiler', zona:'vicente lopez',  zonaLabel:'Vicente López', amb:3, dorms:2, m2:82,  precio:'U$D 1.250/mes', expensas:'$380.000', estado:'5 años', dir:'25 De Mayo N° 48', desc:'con balcón, muy luminoso y en zona tranquila', cod:'1403' },
+];
+const ZONAS = ['caballito','belgrano','pilar','vicente lopez','nuñez','vicente lópez'];
+const ZONA_ALIAS = { 'vicente lópez':'vicente lopez', 'nuñez':'belgrano' }; // Núñez linda con Belgrano: ofrecemos lo más cercano
+const REQUISITOS_ALQUILER = 'Para alquilar pedimos garantía propietaria o seguro de caución, recibo de sueldo (3 veces el valor del alquiler aprox.) o monotributo equivalente, y DNI.';
+const ASESOR_NOMBRE = 'Fede, de nuestro equipo comercial';
+function zonaLabel(zKey){ const found = DEPTOS.find(d=>d.zona===zKey); if(found) return found.zonaLabel; return zKey ? zKey.charAt(0).toUpperCase()+zKey.slice(1) : 'esa zona'; }
+
+let MODE='comercial'; // 'comercial' | 'auto'
+function setMode(m){
+  MODE=m;
+  document.getElementById('modeA').classList.toggle('active', m==='comercial');
+  document.getElementById('modeB').classList.toggle('active', m==='auto');
+  document.getElementById('modedesc').textContent = m==='comercial'
+    ? 'El agente toma los datos y te pasa el contacto para que un asesor cierre el horario de la visita.'
+    : 'El agente mismo coordina y confirma el horario de la visita, sin pasar por un asesor.';
+  reset(); chat.innerHTML=''; quick.innerHTML='';
+  (async()=>{ await bot('¡Hola! Soy quien atiende las consultas de Pelloni Donato. ¿Estás buscando algo para alquilar o para comprar?', 350); setQuick(QUICK_INICIO); })();
+}
+
+let S, followupTimer;
+function reset(){
+  S={ op:null, zona:null, amb:null, paso:'inicio', mostrado:null, mostrados:[], nombre:null, esperandoNombre:false, esperandoHorario:false };
+  clearTimeout(followupTimer);
+}
+reset();
+
+function hora(){ const d=new Date(); return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'); }
+function burbuja(txt,cls){ const b=document.createElement('div'); b.className='bubble '+cls; b.innerHTML=txt+'<span class="t">'+hora()+(cls==='out'?' ✓✓':'')+'</span>'; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function sysNote(txt){ const b=document.createElement('div'); b.className='sys'; b.textContent=txt; chat.appendChild(b); chat.scrollTop=chat.scrollHeight; }
+function bot(txt,delay=820){ typing.style.display='block'; chat.scrollTop=chat.scrollHeight; return new Promise(r=>setTimeout(()=>{ typing.style.display='none'; burbuja(txt,'in'); r(); }, delay)); }
+function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
+const QUICK_INICIO = ['Busco para alquilar','Busco para comprar','Requisitos para alquilar'];
+
+/* ── Detección de intención (sin inventar: todo mapea a datos reales) ── */
+function detectarOp(t){ if(/alquil|renta/.test(t)) return 'alquiler'; if(/vend|venta|comprar|compra|invertir/.test(t)) return 'venta'; return null; }
+function detectarZona(t){
+  for(const z of ['vicente lopez','vicente lópez','caballito','belgrano','pilar','nuñez','nunez']){
+    if(t.includes(z)) return ZONA_ALIAS[z] || z.replace('nunez','nuñez');
+  }
+  return null;
+}
+function detectarAmb(t){
+  if(/mono\s?ambiente/.test(t)) return 1;
+  const m = t.match(/(\d)\s*amb/);
+  if(m) return parseInt(m[1]);
+  return null;
+}
+function match(){
+  let pool = DEPTOS.filter(d => !S.op || d.op===S.op);
+  if(S.zona){ const z = pool.filter(d => d.zona===S.zona); if(z.length) pool=z; }
+  if(S.amb){ const a = pool.filter(d => d.amb===S.amb); if(a.length) pool=a; }
+  pool = pool.filter(d => !S.mostrados.includes(d.id));
+  return pool[0] || null;
+}
+
+function presentar(d){
+  S.mostrado = d; S.mostrados.push(d.id);
+  const precioLinea = d.expensas ? `${d.precio} + ${d.expensas} de expensas` : d.precio;
+  const ambTxt = d.amb===1?'monoambiente':d.amb+' ambientes';
+  // Transparencia: si lo que tengo no calza con lo pedido (zona o ambientes), lo aclaro
+  // ANTES de ofrecerlo — nunca lo presento como si fuera un match exacto que no es.
+  let caveat = '';
+  if(S.zona && d.zona!==S.zona) caveat = `En ${zonaLabel(S.zona)} no tengo nada disponible ahora mismo, pero en ${d.zonaLabel} sí tengo algo que te puede interesar: `;
+  else if(S.amb && d.amb!==S.amb) caveat = `De ${S.amb===1?'monoambiente':S.amb+' ambientes'} no tengo ahora en ${d.zonaLabel}, pero tengo este ${ambTxt} que está muy bueno: `;
+  else caveat = `Mirá, tengo justo un ${ambTxt} en ${d.zonaLabel} que te puede interesar: `;
+  return `${caveat}${d.desc}. Son ${d.m2} m², sobre ${d.dir} (${d.estado}).\n\n${precioLinea}.`;
+}
+
+/* ── Seguimiento proactivo: si queda en "lo pienso" sin agendar, el agente
+   vuelve a escribir solo a los pocos segundos — como haría un asesor real. ── */
+function armarSeguimiento(){
+  clearTimeout(followupTimer);
+  if(S.paso==='cierre_ok') return;
+  followupTimer = setTimeout(async ()=>{
+    sysNote('5 min después (simulado)');
+    const alt = DEPTOS.filter(d => (!S.op||d.op===S.op) && !S.mostrados.includes(d.id))[0];
+    if(S.mostrado){
+      if(alt){
+        await bot(`¡Hola de nuevo! Te quería contar que además de lo de ${S.mostrado.zonaLabel} tengo otra opción que capaz te cierra mejor: un ${alt.amb===1?'monoambiente':alt.amb+' ambientes'} en ${alt.zonaLabel}, ${alt.precio}. ¿Te paso los detalles o seguís pensando lo anterior?`);
+        setQuick(['Contame esa otra','Sigo pensando lo anterior','Coordinemos una visita']);
+      } else {
+        await bot(`¡Hola! Te escribo por si seguís con intenciones de avanzar con lo de ${S.mostrado.zonaLabel}. Si querés coordinamos una visita, o si preferís te cuento otra opción.`);
+        setQuick(['Coordinemos una visita','Ver otras opciones']);
+      }
+    }
+  }, 6000);
+}
+
+async function responder(m){
+  const t=m.toLowerCase().trim();
+  clearTimeout(followupTimer);
+
+  if(/(empezar de nuevo|reiniciar|de cero)/.test(t)){ reset(); await bot('¡Dale, arrancamos de nuevo! ¿Buscás algo para alquilar o para comprar?'); setQuick(QUICK_INICIO); return; }
+
+  // Tomar nombre / horario si estábamos esperando eso (cierre de visita)
+  if(S.esperandoNombre){
+    S.nombre = m.trim(); S.esperandoNombre=false; S.esperandoHorario=true;
+    await bot(`Gracias, ${S.nombre}. ¿Qué día y horario te queda cómodo para la visita?`);
+    setQuick(['Esta semana por la tarde','El sábado a la mañana','Mañana temprano']);
+    return;
+  }
+  if(S.esperandoHorario){
+    S.esperandoHorario=false; S.paso='cierre_ok';
+    if(MODE==='comercial'){
+      await bot(`Perfecto, ${S.nombre}. Le paso tus datos y el horario (${m.trim()}) a ${ASESOR_NOMBRE}, así te confirma la visita a ${S.mostrado?S.mostrado.dir:'la propiedad'} y queda cerrado directo con él. En breve te escribe.`);
+      sysNote('→ conversación derivada a comercial (handoff)');
+    } else {
+      await bot(`¡Listo, ${S.nombre}! Quedás agendado para ${m.trim()} en ${S.mostrado?S.mostrado.dir:'la propiedad'}. Te mando la ubicación exacta más cerca de la fecha. ¡Te esperamos!`);
+      sysNote('→ visita agendada automáticamente');
+    }
+    setQuick(['Gracias','Ver otra opción']);
+    return;
+  }
+
+  const op=detectarOp(t), zona=detectarZona(t), amb=detectarAmb(t);
+  const preguntaPrecio=/(precio|cu[aá]nto|sale|vale|cuesta|valor)/.test(t);
+  const quiereVisita=/(visita|coordin|verla|conocerla|agendar|ir a ver|me interesa|quiero verlo)/.test(t);
+  const pensando=/(lo voy a pensar|lo pienso|despu[eé]s te aviso|te aviso|dale gracias|despues veo)/.test(t);
+
+  if(op) S.op=op; if(zona) S.zona=zona; if(amb) S.amb=amb;
+
+  // Pedido directo de visita
+  if(quiereVisita && S.mostrado){
+    S.esperandoNombre=true;
+    await bot('¡Buenísimo! Para coordinar, ¿me pasás tu nombre?');
+    return;
+  }
+
+  // Requisitos
+  if(/(requisit|qu[eé] piden|qu[eé] necesito|garant[ií]a|papeles|documenta)/.test(t)){
+    await bot(S.op==='venta' ? 'Para la compra trabajamos con boleto y escritura en escribanía, y si es con crédito hipotecario te podemos orientar con el banco. ¿Seguimos viendo opciones?' : REQUISITOS_ALQUILER+' ¿Coordinamos una visita a la que vimos o seguimos buscando?');
+    setQuick(S.mostrado ? ['Coordinemos una visita','Ver otra opción'] : QUICK_INICIO);
+    return;
+  }
+
+  // Precio sobre lo ya mostrado
+  if(preguntaPrecio && S.mostrado){
+    const precioLinea = S.mostrado.expensas ? `${S.mostrado.precio} + ${S.mostrado.expensas} de expensas` : S.mostrado.precio;
+    await bot(`${precioLinea}. ¿Coordinamos una visita para que la conozcas, o preferís ver otra opción?`);
+    setQuick(['Sí, coordinar visita','Ver otra opción']);
+    armarSeguimiento();
+    return;
+  }
+
+  // "Lo pienso" -> dispara el seguimiento proactivo (demostración en vivo)
+  if(pensando && S.mostrado){
+    await bot('¡Dale, sin apuro! Cualquier cosa quedo por acá.');
+    armarSeguimiento();
+    return;
+  }
+
+  // Otra opción
+  if(/(otra opci|otras opci|ver otr|no me convence|algo distinto|otra zona|ver otra)/.test(t)){
+    const d = match();
+    if(d){ await bot(presentar(d)); setQuick(['Me interesa, coordinemos','Precio y expensas','Ver otra opción']); armarSeguimiento(); }
+    else { await bot(`Por ahora en ${zonaLabel(S.zona)} no tengo más opciones que las que ya te conté, pero puedo avisarte apenas entre algo nuevo a la cartera. ¿Querés que te avise, o probamos en otra zona?`); setQuick(['Avisame cuando entre algo','Probemos otra zona']); }
+    return;
+  }
+
+  // Falta operación -> preguntar
+  if(!S.op){
+    await bot('¿Lo estás buscando para alquilar o para comprar?');
+    setQuick(['Para alquilar','Para comprar']);
+    return;
+  }
+
+  // Falta zona o ambientes -> indagar (sólo si todavía no mostramos nada)
+  if(!S.mostrado && (!S.zona || !S.amb)){
+    if(!S.zona){
+      await bot('¿En qué zona te interesa? Tenemos disponibilidad en Caballito, Belgrano, Pilar y Vicente López.');
+      setQuick(['Caballito','Belgrano','Pilar','Vicente López']);
+      return;
+    }
+    if(!S.amb){
+      await bot('¿De cuántos ambientes lo buscás?');
+      setQuick(['Monoambiente','2 ambientes','3 ambientes']);
+      return;
+    }
+  }
+
+  // Ya tenemos suficiente -> recomendar
+  if(!S.mostrado && S.op){
+    const d = match();
+    if(d){ await bot(presentar(d)); setQuick(['Me interesa, coordinemos','Precio y expensas','Ver otra opción']); armarSeguimiento(); return; }
+    await bot(`Justo en ${zonaLabel(S.zona)} no tengo disponible ahora mismo para ${S.op}, pero dejame tu contacto y te aviso apenas entre algo, o si preferís te muestro lo más parecido que tengo en otra zona.`);
+    setQuick(['Mostrame otra zona','Dejo mi contacto']);
+    return;
+  }
+
+  if(/^(hola|buenas|buen d[ií]a|buenas tardes|buenas noches|hey|qu[eé] tal|holis|hi)\b/.test(t)){
+    await bot('¡Hola! ¿Estás buscando algo para alquilar o para comprar?');
+    setQuick(QUICK_INICIO);
+    return;
+  }
+
+  // Fallback honesto (nunca "no tengo este dato cargado en la demo")
+  await bot('Dejame confirmarlo bien con el equipo así no te digo cualquier cosa, y te aviso apenas lo tenga. Mientras tanto, ¿seguimos viendo opciones o coordinamos una visita a lo que ya vimos?');
+  setQuick(S.mostrado ? ['Coordinemos una visita','Ver otra opción'] : QUICK_INICIO);
+}
+
+async function enviar(){ const m=inp.value.trim(); if(!m) return; burbuja(m,'out'); inp.value=''; await responder(m); }
+inp.addEventListener('keydown',e=>{ if(e.key==='Enter') enviar(); });
+(async()=>{ await bot('¡Hola! Soy quien atiende las consultas de Pelloni Donato. ¿Estás buscando algo para alquilar o para comprar?', 400); setQuick(QUICK_INICIO); })();
+</script>
+</body>
+</html>
