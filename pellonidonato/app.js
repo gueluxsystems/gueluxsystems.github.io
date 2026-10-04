@@ -15,7 +15,8 @@ function setMode(m){
 
 let S, followupTimer;
 function reset(){
-  S={ op:null, tipo:null, zona:null, amb:null, presupuesto:null, pago:null,
+  S={ op:null, tipo:null, tipoSkip:false, zona:null, zonaSkip:false, amb:null, ambSkip:false,
+      presupuesto:null, pago:null, pagoSkip:false,
       paso:'inicio', mostrado:null, mostrados:[], nombre:null,
       esperandoNombre:false, esperandoHorario:false, fichaMostrada:false };
   clearTimeout(followupTimer);
@@ -107,6 +108,8 @@ function descTipo(d){
   if(d.tipo==='quinta') return 'quinta de '+(d.amb||'varios')+' ambientes';
   return TIPO_LABELS[d.tipo]||d.tipo;
 }
+const TIPOS_FEMENINOS = new Set(['casa','quinta','oficina','cochera']);
+function articulo(tipo){ return TIPOS_FEMENINOS.has(tipo) ? 'una' : 'un'; }
 
 function presentar(d){
   S.mostrado = d; S.mostrados.push(d.cod);
@@ -118,7 +121,7 @@ function presentar(d){
   if(S.tipo && d.tipo!==S.tipo) caveat = `De ${TIPO_LABELS[S.tipo]} no tengo ahora en esa búsqueda, pero tengo esto que te puede interesar: `;
   else if(S.zona && d.zona!==S.zona) caveat = `En ${zonaLabel(S.zona)} no tengo nada disponible ahora mismo, pero en ${d.zonaLabel} sí tengo algo: `;
   else if(S.amb && TIPOS_RESIDENCIALES.has(d.tipo) && d.amb!==S.amb) caveat = `De ${S.amb===1?'monoambiente':S.amb+' ambientes'} no tengo ahora en ${d.zonaLabel}, pero tengo esto que está muy bueno: `;
-  else caveat = `Mirá, tengo justo ${TIPOS_RESIDENCIALES.has(d.tipo)?'un '+descTipo(d):'esto'} en ${d.zonaLabel} que te puede interesar: `;
+  else caveat = `Mirá, tengo justo ${TIPOS_RESIDENCIALES.has(d.tipo)?articulo(d.tipo)+' '+descTipo(d):'esto'} en ${d.zonaLabel} que te puede interesar: `;
   const aptoC = d.aptoCredito ? ' (apto crédito hipotecario)' : '';
   return `${caveat}${d.desc||TIPO_LABELS[d.tipo]}. ${supTxt}${supTxt?', sobre':'Sobre'} ${d.dir}${d.estado?' ('+d.estado+')':''}.\n\n${partes[0]}${aptoC}.`;
 }
@@ -183,12 +186,22 @@ async function responder(m){
   const preguntaPrecio=/(precio|cu[aá]nto|sale|vale|cuesta|valor)/.test(t);
   const quiereVisita=/(visita|coordin|verla|conocerla|agendar|ir a ver|me interesa|quiero verlo)/.test(t);
   const pensando=/(lo voy a pensar|lo pienso|despu[eé]s te aviso|te aviso|dale gracias|despues veo)/.test(t);
-  const noDecirPresu=/(prefiero no decir|no quiero decir|paso)/.test(t);
+  const noSabe=/(prefiero no decir|no quiero decir|^paso$|no\s*(lo\s*)?(s[eé]|tengo|tenes|tenés)\b|ni\s*idea|la verdad que no|cualquier\w*|lo que (haya|sea|tengas|tengan)|no tengo preferencia|me da igual|no estoy segur[oa])/.test(t);
 
   if(op) S.op=op; if(tipo) S.tipo=tipo; if(zona) S.zona=zona; if(amb) S.amb=amb;
   if(presu && !S.presupuesto) S.presupuesto=presu;
-  if(noDecirPresu && !S.presupuesto) S.presupuesto='prefiere no decir';
   if(pago) S.pago=pago;
+
+  // Si contesta "no sé / no tengo / cualquiera" a la pregunta que está pendiente,
+  // se saltea ESE dato puntual en vez de repetir la misma pregunta en loop
+  // (el resto de los filtros ya cargados se sigue respetando).
+  if(noSabe && !S.mostrado){
+    if(S.op && !S.tipo && !S.tipoSkip) S.tipoSkip=true;
+    else if(S.op && !S.zona && !S.zonaSkip) S.zonaSkip=true;
+    else if(S.op && TIPOS_RESIDENCIALES.has(S.tipo) && !S.amb && !S.ambSkip) S.ambSkip=true;
+    else if(S.op && !S.presupuesto) S.presupuesto='prefiere no decir';
+    else if(S.op==='venta' && !S.pago && !S.pagoSkip) S.pagoSkip=true;
+  }
 
   if(quiereVisita && S.mostrado){
     if(!S.fichaMostrada){ sysNote(fichaResumen()); S.fichaMostrada=true; }
@@ -226,11 +239,11 @@ async function responder(m){
 
   // Secuencia de calificación (como la haría un buen asesor, no un formulario rígido)
   if(!S.op){ await bot('¿Lo estás buscando para alquilar o para comprar?'); setQuick(['Para alquilar','Para comprar','Alquiler temporario']); return; }
-  if(!S.mostrado && !S.tipo){ await bot('¿Qué tipo de propiedad buscás: casa, departamento, PH, terreno, u otra?'); setQuick(['Departamento','Casa','Casa PH','Terreno']); return; }
-  if(!S.mostrado && !S.zona){ await bot(`¿En qué zona te interesa? Tengo disponibilidad en ${ZONA_CHIPS.map(z=>ZONA_LABEL_CORTO[z]).join(', ')}, entre otras.`); setQuick(ZONA_CHIPS.map(z=>ZONA_LABEL_CORTO[z])); return; }
-  if(!S.mostrado && TIPOS_RESIDENCIALES.has(S.tipo) && !S.amb){ await bot('¿De cuántos ambientes lo buscás?'); setQuick(['Monoambiente','2 ambientes','3 ambientes']); return; }
+  if(!S.mostrado && !S.tipo && !S.tipoSkip){ await bot('¿Qué tipo de propiedad buscás: casa, departamento, PH, terreno, u otra?'); setQuick(['Departamento','Casa','Casa PH','Terreno','No tengo preferencia']); return; }
+  if(!S.mostrado && !S.zona && !S.zonaSkip){ await bot(`¿En qué zona te interesa? Tengo disponibilidad en ${ZONA_CHIPS.map(z=>ZONA_LABEL_CORTO[z]).join(', ')}, entre otras.`); setQuick([...ZONA_CHIPS.map(z=>ZONA_LABEL_CORTO[z]), 'Cualquier zona']); return; }
+  if(!S.mostrado && TIPOS_RESIDENCIALES.has(S.tipo) && !S.amb && !S.ambSkip){ await bot('¿De cuántos ambientes lo buscás?'); setQuick(['Monoambiente','2 ambientes','3 ambientes','No tengo preferencia']); return; }
   if(!S.mostrado && !S.presupuesto){ await bot('¿Tenés un presupuesto aproximado en mente? Así te muestro algo que calce bien.'); setQuick(['Prefiero no decir']); return; }
-  if(!S.mostrado && S.op==='venta' && !S.pago){ await bot('¿Lo pensás pagar de contado o con crédito hipotecario?'); setQuick(['Contado','Crédito hipotecario','Prefiero no decir']); return; }
+  if(!S.mostrado && S.op==='venta' && !S.pago && !S.pagoSkip){ await bot('¿Lo pensás pagar de contado o con crédito hipotecario?'); setQuick(['Contado','Crédito hipotecario','Prefiero no decir']); return; }
 
   if(!S.mostrado){
     const d = match();
