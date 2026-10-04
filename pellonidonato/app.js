@@ -30,6 +30,16 @@ function bot(txt,delay=820){ typing.style.display='block'; chat.scrollTop=chat.s
 function setQuick(arr){ quick.innerHTML=''; arr.forEach(t=>{ const b=document.createElement('button'); b.textContent=t; b.onclick=()=>{inp.value=t;enviar();}; quick.appendChild(b); }); }
 const QUICK_INICIO = ['Busco para alquilar','Busco para comprar','Requisitos para alquilar'];
 
+/** Limpia una respuesta libre antes de hacerla eco en una confirmación (ej. horario):
+    saca signos de pregunta y coletillas ("puede ser", "te parece") para que no quede
+    "quedás agendado para el miércoles puede ser?" en vez de "...para el miércoles". */
+function limpiarRespuesta(s){
+  let x = s.trim().replace(/[¿?]/g,'').trim();
+  x = x.replace(/\b(puede ser|podr[ií]a ser|estar[ií]a bien|te parece|les parece|dale|est[aá] bien|ok|okay)\b[.,]?\s*$/i,'').trim();
+  x = x.replace(/[,.]$/,'').trim();
+  return x || s.trim();
+}
+
 function zonaLabel(zKey){ const found = PROPIEDADES.find(d=>d.zona===zKey); if(found) return found.zonaLabel.split(' (')[0]; return ZONA_LABEL_CORTO[zKey] || (zKey ? zKey.charAt(0).toUpperCase()+zKey.slice(1) : 'esa zona'); }
 
 /* ── Detección de intención (todo mapea a datos reales, nunca se inventa) ── */
@@ -171,11 +181,12 @@ async function responder(m){
   }
   if(S.esperandoHorario){
     S.esperandoHorario=false; S.paso='cierre_ok';
+    const horario = limpiarRespuesta(m);
     if(MODE==='comercial'){
-      await bot(`Perfecto, ${S.nombre}. Le paso tus datos y el horario (${m.trim()}) a ${ASESOR_NOMBRE}, así te confirma la visita a ${S.mostrado?S.mostrado.dir:'la propiedad'} y queda cerrado directo con él. En breve te escribe.`);
+      await bot(`Perfecto, ${S.nombre}. Le paso tus datos y el horario (${horario}) a ${ASESOR_NOMBRE}, así te confirma la visita a ${S.mostrado?S.mostrado.dir:'la propiedad'} y queda cerrado directo con él. En breve te escribe.`);
       sysNote('→ conversación derivada a comercial (handoff)');
     } else {
-      await bot(`¡Listo, ${S.nombre}! Quedás agendado para ${m.trim()} en ${S.mostrado?S.mostrado.dir:'la propiedad'}. Te mando la ubicación exacta más cerca de la fecha. ¡Te esperamos!`);
+      await bot(`¡Listo, ${S.nombre}! Quedás agendado para ${horario} en ${S.mostrado?S.mostrado.dir:'la propiedad'}. Te mando la ubicación exacta más cerca de la fecha. ¡Te esperamos!`);
       sysNote('→ visita agendada automáticamente');
     }
     setQuick(['Gracias','Ver otra opción']);
@@ -216,6 +227,13 @@ async function responder(m){
     return;
   }
 
+  if(/(qu[eé] (barrios?|zonas?)|cu[aá]les? (barrios?|zonas?)|zonas? (ten[eé]s|tienen|disponibles|manej[aá]n)|barrios? (ten[eé]s|tienen|disponibles)|d[oó]nde (ten[eé]s|hay) (propiedades|disponibilidad))/.test(t)){
+    const zonasDisponibles = Array.from(new Set(poolBase().map(d=>d.zonaLabel.split(' (')[0])));
+    await bot(`Por ahora tengo disponibilidad en: ${zonasDisponibles.join(', ')}. ¿Te muestro algo en alguna zona puntual?`);
+    setQuick(zonasDisponibles.slice(0,4));
+    return;
+  }
+
   if(preguntaPrecio && S.mostrado){
     const precioLinea = S.mostrado.expensas ? `${S.mostrado.precio} + ${S.mostrado.expensas} de expensas` : S.mostrado.precio;
     await bot(`${precioLinea}. ¿Coordinamos una visita para que la conozcas, o preferís ver otra opción?`);
@@ -230,7 +248,7 @@ async function responder(m){
     return;
   }
 
-  if(/(otra opci|otras opci|ver otr|no me convence|algo distinto|otra zona|ver otra)/.test(t)){
+  if(/(otra opci|otras opci|ver otr|no me convence|algo distinto|otra zona|ver otra|otro lado|viendo opcion|ver opcion|m[aá]s opciones|mostrame (mas|otra)|segu[ií]mos? viendo|dale.*(opcion|viendo))/.test(t)){
     const d = match();
     if(d){ await bot(presentar(d)); setQuick(['Me interesa, coordinemos','Precio y expensas','Ver otra opción']); armarSeguimiento(); }
     else { await bot(`Por ahora no tengo más opciones que las que ya te conté para esa búsqueda, pero puedo avisarte apenas entre algo nuevo a la cartera. ¿Querés que te avise, o probamos otra zona/tipo?`); setQuick(['Avisame cuando entre algo','Probar otra zona']); }
