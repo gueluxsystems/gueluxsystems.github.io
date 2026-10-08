@@ -58,7 +58,7 @@ function detectarTipo(t){
   if(/cochera|garage/.test(t)) return 'cochera';
   if(/quinta/.test(t)) return 'quinta';
   if(/casa\b/.test(t)) return 'casa';
-  if(/depto|departamento|monoambiente/.test(t)) return 'depto';
+  if(/dpto|depto|depa\b|departamento|monoambiente/.test(t)) return 'depto';
   return null;
 }
 /** Saca acentos con un mapa explícito de caracteres (sin regex de rango unicode,
@@ -252,6 +252,53 @@ async function responder(m){
     const d = match();
     if(d){ await bot(presentar(d)); setQuick(['Me interesa, coordinemos','Precio y expensas','Ver otra opción']); armarSeguimiento(); }
     else { await bot(`Por ahora no tengo más opciones que las que ya te conté para esa búsqueda, pero puedo avisarte apenas entre algo nuevo a la cartera. ¿Querés que te avise, o probamos otra zona/tipo?`); setQuick(['Avisame cuando entre algo','Probar otra zona']); }
+    return;
+  }
+
+  // ── Preguntas frecuentes que NO son "alquilar/comprar" (si no, caerían en el gate
+  //    de abajo y el agente las ignoraría preguntando la operación). Van antes del gate. ──
+
+  // Crédito / financiación (pregunta típica de compra → asume venta). Con verbo para no
+  // pisar la RESPUESTA "crédito hipotecario" del paso de forma de pago.
+  if(/(aceptan cr[eé]dito|con cr[eé]dito|apto (para )?cr[eé]dito|son? aptas? (para )?cr[eé]dito|es apto|financia|financiaci[oó]n|en cuotas|\bcuotas?\b)/.test(t)){
+    if(!S.op) S.op='venta';
+    await bot('Sí, varias de nuestras propiedades en venta son aptas para crédito hipotecario, y para la financiación con el banco te orienta nuestro equipo. Contame qué estás buscando (zona, ambientes) y te muestro las que pueden servirte.');
+    setQuick(S.mostrado?['Me interesa, coordinemos','Ver otra opción']:['Departamento','Casa','Casa PH']);
+    return;
+  }
+
+  // Negociación / precio / descuento.
+  if(/(muy caro|es caro|est[aá] caro|car[ií]sim|descuento|rebaj|negociabl|hacen precio|mejor precio|baja.*precio|aceptan.*oferta|contraoferta)/.test(t)){
+    await bot('Los valores que publicamos son los vigentes, pero siempre se puede acercar una oferta al propietario a través de nuestro equipo comercial. Dejame mostrarte opciones que entren en lo que buscás. ¿Seguimos?');
+    setQuick(S.mostrado?['Coordinemos una visita','Ver otra opción']:QUICK_INICIO);
+    return;
+  }
+
+  // Sobre la inmobiliaria (ubicación / horario / teléfono / oficina presencial).
+  if(/(d[oó]nde (queda|quedan|est[aá]n? (ubicad|la inmob))|direcci[oó]n (de|donde)|ubicaci[oó]n de (la|su)|horario|a qu[eé] hora|atienden|tel[eé]fono|los? llamo|sucursal|oficina f[ií]sica|su oficina|atenci[oó]n presencial)/.test(t)){
+    await bot('Por acá te atiendo al instante las 24 horas con toda la info de las propiedades. Para la dirección de la oficina, el teléfono o una visita presencial, te coordino con nuestro equipo. ¿Querés que te muestre propiedades o coordinamos una visita?');
+    setQuick(S.mostrado?['Coordinemos una visita','Ver otra opción']:QUICK_INICIO);
+    return;
+  }
+
+  // Meta: ¿sos un bot / una persona?
+  if(/(sos (un |una )?(bot|robot|m[aá]quina|persona|humano|real|programa|ia)|es(to)? (un |una )?(bot|robot|autom[aá]tic)|respuesta autom[aá]tica|contest[aá]s? autom[aá]tic|hablo con (un |una )?(bot|persona|humano|m[aá]quina)|con qui[eé]n (hablo|estoy hablando)|qui[eé]n sos|sos real)/.test(t)){
+    await bot('Soy el asistente de Pelloni Donato: atiendo las consultas al instante para que no tengas que esperar. Cuando quieras hablar con una persona del equipo, te derivo sin problema. ¿En qué te puedo ayudar?');
+    setQuick(S.mostrado?['Coordinemos una visita','Ver otra opción']:QUICK_INICIO);
+    return;
+  }
+
+  // Cortesía.
+  if(/^(gracias|muchas gracias|mil gracias|ok gracias|buen[ií]simo gracias|perfecto gracias|genial gracias)\b/.test(t)){
+    await bot('¡De nada! Cualquier cosa quedo por acá para ayudarte. 🙌');
+    setQuick(S.mostrado?['Coordinemos una visita','Ver otra opción']:QUICK_INICIO);
+    return;
+  }
+
+  // Pedido de ayuda abierto (solo si todavía no arrancó la calificación).
+  if(!S.op && /(necesito ayuda|me ayud[aá]s|me pod[eé]s ayudar|^ayuda\b|no s[eé] qu[eé] busco|no s[eé] qu[eé] estoy buscando|orientame|asesorame|ayudame)/.test(t)){
+    await bot('¡Claro, para eso estoy! Te ayudo a encontrar la propiedad ideal. ¿La buscás para comprar o para alquilar?');
+    setQuick(QUICK_INICIO);
     return;
   }
 
