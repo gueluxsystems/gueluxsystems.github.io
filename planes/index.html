@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Planes de Guelux — empezá solo o con ayuda personalizada</title>
+<meta name="description" content="Elegí un plan self-serve y arrancá solo, o pedí acompañamiento personalizado con Martín. Básico, Pro y Empresa — conectá tu WhatsApp, cargá tu catálogo y empezá a atender con IA." />
+<meta name="keywords" content="planes Guelux, precio agente de IA, contratar empleado digital, self-serve WhatsApp IA, planes atención por WhatsApp" />
+<link rel="canonical" href="https://guelux.com/planes/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#080d0e" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Guelux" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Planes de Guelux" />
+<meta property="og:description" content="Elegí un plan self-serve y arrancá solo, o pedí acompañamiento personalizado." />
+<meta property="og:url" content="https://guelux.com/planes/" />
+<meta property="og:image" content="https://guelux.com/guelux-logo.png" />
+<link rel="icon" type="image/png" href="/guelux-logo.png" />
+<link rel="apple-touch-icon" href="/guelux-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:8 13 14;--panel:14 20 22;--elevated:18 26 28;--border:30 42 45;--border-strong:42 56 60;--fg:231 239 237;--muted:134 160 160;--teal:26 163 154;--teal-dim:17 83 97;--wasabi:182 217 76;--danger:239 100 100;--warn:217 151 60;--font-sans:"Inter",ui-sans-serif,system-ui,sans-serif}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-sans);background:rgb(var(--bg));color:rgb(var(--fg));-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .gx-nav{position:sticky;top:0;z-index:50;border-bottom:1px solid rgb(var(--border)/.6);background:rgb(var(--bg)/.82);backdrop-filter:blur(12px)}
+  .gx-nav-in{max-width:1180px;margin:0 auto;padding:.8rem 1.4rem;display:flex;align-items:center;justify-content:space-between}
+  .gx-brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.15rem;letter-spacing:-.01em;color:rgb(var(--fg));text-decoration:none}
+  .gx-brand img{height:30px;width:30px;object-fit:contain}
+  .gx-nav-cta{border:1px solid rgb(var(--teal));color:rgb(var(--teal));border-radius:.55rem;padding:.5rem 1.15rem;font-size:.88rem;font-weight:600;transition:all .2s;text-decoration:none}
+  .gx-nav-cta:hover{background:rgb(var(--teal));color:rgb(var(--bg))}
+  .gx-wrap{position:relative;width:100%;max-width:1180px;margin:0 auto;padding:clamp(3rem,7vw,5rem) 1.4rem}
+  .gx-kicker{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:rgb(var(--teal));margin-bottom:1.2rem;text-align:center}
+  .gx-h1{font-size:clamp(2.2rem,5.4vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:rgb(var(--fg));text-align:center;margin:0}
+  .gx-h1 .em{color:rgb(var(--teal))}
+  .gx-sub{margin:1.3rem auto 0;max-width:46ch;font-size:1.05rem;line-height:1.6;color:rgb(var(--muted));text-align:center}
+  .plans{margin-top:3.2rem;display:grid;gap:1.3rem;grid-template-columns:1fr}
+  @media(min-width:860px){.plans{grid-template-columns:repeat(3,1fr)}}
+  .plan{position:relative;border:1px solid rgb(var(--border));background:rgb(var(--panel));border-radius:1.1rem;padding:1.9rem 1.6rem 2.1rem;display:flex;flex-direction:column}
+  .plan.featured{border-color:rgb(var(--teal));box-shadow:0 0 0 1px rgb(var(--teal)/.4),0 20px 50px -20px rgb(var(--teal)/.35);transform:translateY(-6px)}
+  .plan-badge{position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);background:rgb(var(--wasabi));color:rgb(var(--bg));font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;white-space:nowrap}
+  .plan-name{font-size:1.15rem;font-weight:700}
+  .plan-audience{margin-top:.3rem;font-size:.85rem;color:rgb(var(--muted))}
+  .plan-price{margin-top:1.2rem;display:flex;align-items:baseline;gap:.35rem}
+  .plan-price .num{font-size:2.3rem;font-weight:800;letter-spacing:-.02em}
+  .plan-price .cur{font-size:1rem;color:rgb(var(--muted))}
+  .plan-price .per{font-size:.85rem;color:rgb(var(--muted))}
+  .plan-feats{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1}
+  .plan-feats li{font-size:.9rem;line-height:1.45;color:rgb(var(--fg)/.9);display:flex;gap:.55rem}
+  .plan-feats li:before{content:"✓";color:rgb(var(--teal));font-weight:700;flex-shrink:0}
+  .plan-cta{margin-top:1.6rem;display:block;text-align:center;border-radius:.6rem;padding:.85rem 1rem;font-weight:700;font-size:.95rem;cursor:pointer;border:1px solid rgb(var(--border-strong));background:transparent;color:rgb(var(--fg));transition:all .2s}
+  .plan.featured .plan-cta{background:rgb(var(--teal));color:rgb(var(--bg));border-color:rgb(var(--teal))}
+  .plan-cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .assist{margin-top:2.2rem;border:1px dashed rgb(var(--border-strong));border-radius:1.1rem;padding:1.6rem 1.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between}
+  .assist-text h3{margin:0 0 .35rem;font-size:1.05rem}
+  .assist-text p{margin:0;font-size:.88rem;color:rgb(var(--muted));max-width:52ch}
+  .assist-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+  .gx-wa{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;border-radius:.55rem;padding:.75rem 1.2rem;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
+  .gx-wa:hover{filter:brightness(1.07)}
+  .gx-mail{display:inline-flex;align-items:center;gap:.5rem;background:rgb(var(--teal)/.1);border:1px solid rgb(var(--teal)/.4);color:rgb(var(--teal));border-radius:.55rem;padding:.75rem 1.2rem;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
+  .gx-mail:hover{background:rgb(var(--teal)/.18)}
+  #signup{margin-top:3.2rem;border-top:1px solid rgb(var(--border)/.6);padding-top:2.6rem}
+  #signup h2{text-align:center;font-size:1.4rem;margin:0}
+  #signup .chosen{text-align:center;margin-top:.5rem;font-size:.9rem;color:rgb(var(--teal))}
+  .form-grid{max-width:480px;margin:1.8rem auto 0;display:flex;flex-direction:column;gap:.9rem}
+  .form-grid label{font-size:.82rem;color:rgb(var(--muted));display:block;margin-bottom:.3rem}
+  .form-grid input,.form-grid select{width:100%;background:rgb(var(--elevated));border:1px solid rgb(var(--border-strong));border-radius:.5rem;padding:.7rem .8rem;color:rgb(var(--fg));font-size:.92rem;font-family:inherit}
+  .form-grid input:focus,.form-grid select:focus{outline:none;border-color:rgb(var(--teal)/.7)}
+  .form-submit{margin-top:.4rem;background:rgb(var(--teal));color:rgb(var(--bg));border:none;border-radius:.6rem;padding:.95rem 1rem;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s}
+  .form-submit:hover{filter:brightness(1.08)}
+  .form-submit:disabled{opacity:.6;cursor:default}
+  .form-note{font-size:.78rem;color:rgb(var(--muted));text-align:center}
+  .form-error{display:none;background:rgb(var(--danger)/.12);border:1px solid rgb(var(--danger)/.4);color:rgb(var(--danger));border-radius:.5rem;padding:.7rem .85rem;font-size:.85rem}
+  .gx-foot{border-top:1px solid rgb(var(--border)/.6);margin-top:3rem}
+  .gx-foot-in{max-width:1180px;margin:0 auto;padding:2rem 1.4rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;font-size:.85rem;color:rgb(var(--muted))}
+  .gx-foot-in b{color:rgb(var(--fg));font-weight:700}
+</style>
+</head>
+<body>
+<header class="gx-nav">
+  <div class="gx-nav-in">
+    <a href="/" class="gx-brand"><img src="/guelux-logo.png" alt="Guelux"/><span>Guelux</span></a>
+    <a href="/#contacto" class="gx-nav-cta">Hablemos</a>
+  </div>
+</header>
+<main>
+  <div class="gx-wrap">
+    <p class="gx-kicker">Planes</p>
+    <h1 class="gx-h1">Elegí cómo arrancar <span class="em">con Guelux</span></h1>
+    <p class="gx-sub">Self-serve: te das de alta, conectás tu WhatsApp y cargás tu catálogo solo. Si preferís que te acompañemos, también se puede.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-name">Básico</div>
+        <div class="plan-audience">Para empresas chicas</div>
+        <div class="plan-price"><span class="cur">USD</span><span class="num">99</span><span class="per">/mes</span></div>
+        <ul class="plan-feats">
+          <li>Un agente de atención por WhatsApp, conectado solo por QR</li>
+          <li>Cargás tu propio catálogo y contexto del negocio</li>
+          <li>Elegís el modo de cierre: deriva a vos o agenda directo</li>
+          <li>Invitás a tu equipo sin límite de usuarios</li>
+        </ul>
+        <button class="plan-cta" onclick="elegirPlan('self_serve_basic','Básico')">Elegir Básico</button>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">El más elegido</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-audience">Para empresas medianas</div>
+        <div class="plan-price"><span class="cur">USD</span><span class="num">149</span><span class="per">/mes</span></div>
+        <ul class="plan-feats">
+          <li>Todo lo de Básico</li>
+          <li>Mayor volumen de IA incluido por mes</li>
+          <li>Soporte prioritario</li>
+          <li>Invitás a tu equipo sin límite de usuarios</li>
+        </ul>
+        <button class="plan-cta" onclick="elegirPlan('self_serve_pro','Pro')">Elegir Pro</button>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Empresa</div>
+        <div class="plan-audience">Para empresas grandes de +20 empleados</div>
+        <div class="plan-price"><span class="cur">USD</span><span class="num">549</span><span class="per">/mes</span></div>
+        <ul class="plan-feats">
+          <li>Todo lo de Pro</li>
+          <li>Mayor volumen de IA incluido por mes</li>
+          <li>Pensado para equipos y operaciones más grandes</li>
+          <li>Invitás a tu equipo sin límite de usuarios</li>
+        </ul>
+        <button class="plan-cta" onclick="elegirPlan('self_serve_empresa','Empresa')">Elegir Empresa</button>
+      </div>
+    </div>
+
+    <div class="assist">
+      <div class="assist-text">
+        <h3>¿Preferís que te acompañemos?</h3>
+        <p>Martín te arma el agente a medida, carga el contexto con vos y te acompaña en el arranque. Charlamos sin compromiso.</p>
+      </div>
+      <div class="assist-btns">
+        <a href="https://wa.me/4367846548939?text=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente%20de%20Guelux." target="_blank" rel="noopener noreferrer" class="gx-wa">WhatsApp</a>
+        <a href="mailto:gueluxsystems@gmail.com?subject=Quiero%20asistencia%20personalizada&body=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente." class="gx-mail">Enviar un email</a>
+      </div>
+    </div>
+
+    <section id="signup">
+      <h2>Completá tus datos</h2>
+      <p class="chosen" id="chosenPlanLabel">Elegí un plan arriba para continuar.</p>
+      <form class="form-grid" id="signupForm">
+        <div>
+          <label for="orgName">Nombre de tu negocio</label>
+          <input id="orgName" name="orgName" required minlength="2" maxlength="120" />
+        </div>
+        <div>
+          <label for="verticalId">Rubro</label>
+          <select id="verticalId" name="verticalId" required>
+            <option value="" disabled selected>Elegí tu rubro</option>
+            <option value="retail">Comercio / Retail (muebles, deco, indumentaria)</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="salud">Salud y Bienestar</option>
+            <option value="servicios">Servicios Profesionales</option>
+            <option value="inmobiliaria">Inmobiliarias</option>
+            <option value="educacion">Educación</option>
+            <option value="automotriz">Automotriz</option>
+            <option value="gastronomia">Gastronomía y Hotelería</option>
+            <option value="cobranzas">Ventas y Cobranzas</option>
+            <option value="tech">Tecnología y SaaS</option>
+          </select>
+        </div>
+        <div>
+          <label for="ownerName">Tu nombre</label>
+          <input id="ownerName" name="ownerName" required minlength="2" maxlength="120" />
+        </div>
+        <div>
+          <label for="ownerEmail">Tu email</label>
+          <input id="ownerEmail" name="ownerEmail" type="email" required maxlength="180" />
+        </div>
+        <div>
+          <label for="password">Contraseña (mínimo 8 caracteres)</label>
+          <input id="password" name="password" type="password" required minlength="8" maxlength="200" />
+        </div>
+        <input type="hidden" id="plan" name="plan" required />
+        <div class="form-error" id="formError"></div>
+        <button type="submit" class="form-submit" id="formSubmit">Continuar al pago</button>
+        <p class="form-note">Te lleva al checkout seguro de MercadoPago. Tu cuenta se activa apenas se confirma el primer pago.</p>
+      </form>
+    </section>
+  </div>
+</main>
+<footer class="gx-foot"><div class="gx-foot-in"><b>Guelux</b><span>Buenos Aires, Argentina · 2026</span><a href="mailto:gueluxsystems@gmail.com">gueluxsystems@gmail.com</a></div></footer>
+
+<script>
+  var API_BASE = 'https://gueluxapi-production.up.railway.app/api/v1';
+  var PLAN_LABELS = { self_serve_basic: 'Básico — USD 99/mes', self_serve_pro: 'Pro — USD 149/mes', self_serve_empresa: 'Empresa — USD 549/mes' };
+
+  function elegirPlan(planId, label){
+    document.getElementById('plan').value = planId;
+    document.getElementById('chosenPlanLabel').textContent = 'Plan elegido: ' + PLAN_LABELS[planId];
+    document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errorBox = document.getElementById('formError');
+    errorBox.style.display = 'none';
+    var plan = document.getElementById('plan').value;
+    if (!plan) {
+      errorBox.textContent = 'Elegí un plan arriba antes de continuar.';
+      errorBox.style.display = 'block';
+      return;
+    }
+    var btn = document.getElementById('formSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Redirigiendo a MercadoPago…';
+    var body = {
+      orgName: document.getElementById('orgName').value.trim(),
+      ownerName: document.getElementById('ownerName').value.trim(),
+      ownerEmail: document.getElementById('ownerEmail').value.trim(),
+      password: document.getElementById('password').value,
+      verticalId: document.getElementById('verticalId').value,
+      plan: plan,
+    };
+    fetch(API_BASE + '/signup/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then(function (res) {
+        if (!res.ok) {
+          return res.json().catch(function () { return {}; }).then(function (err) {
+            throw new Error(err.message || 'No se pudo iniciar el alta. Probá de nuevo.');
+          });
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        window.location.href = data.checkoutUrl;
+      })
+      .catch(function (err) {
+        errorBox.textContent = err.message || 'No se pudo iniciar el alta. Probá de nuevo.';
+        errorBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Continuar al pago';
+      });
+  });
+</script>
+</body>
+</html>
