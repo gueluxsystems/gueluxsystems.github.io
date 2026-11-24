@@ -43,22 +43,34 @@
   .plan{position:relative;border:1px solid rgb(var(--border));background:rgb(var(--panel));border-radius:1.1rem;padding:1.9rem 1.6rem 2.1rem;display:flex;flex-direction:column}
   .plan.featured{border-color:rgb(var(--teal));box-shadow:0 0 0 1px rgb(var(--teal)/.4),0 20px 50px -20px rgb(var(--teal)/.35);transform:translateY(-6px)}
   .plan-badge{position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);background:rgb(var(--wasabi));color:rgb(var(--bg));font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;white-space:nowrap}
-  .plan-name{font-size:1.15rem;font-weight:700}
-  .plan-audience{margin-top:.3rem;font-size:.85rem;color:rgb(var(--muted))}
-  .plan-price{margin-top:1.2rem;display:flex;align-items:baseline;gap:.35rem}
-  .plan-price .num{font-size:2.3rem;font-weight:800;letter-spacing:-.02em}
-  .plan-price .cur{font-size:1rem;color:rgb(var(--muted))}
-  .plan-price .per{font-size:.85rem;color:rgb(var(--muted))}
-  .plan-feats{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1}
+  .plan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem}
+  .plan-icon{width:2.6rem;height:2.6rem;border-radius:.65rem;background:rgb(var(--elevated));display:flex;align-items:center;justify-content:center;color:rgb(var(--teal));flex-shrink:0}
+  .plan-icon svg{width:1.4rem;height:1.4rem}
+  .plan-pill{font-size:.72rem;font-weight:600;color:rgb(var(--muted));border:1px solid rgb(var(--border-strong));border-radius:999px;padding:.3rem .7rem;white-space:nowrap}
+  .plan-name{margin-top:1rem;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
+  .plan-audience{margin-top:.25rem;font-size:.85rem;color:rgb(var(--muted))}
+  .plan-pricebox{margin-top:1.3rem;background:rgb(var(--elevated));border-radius:.8rem;padding:1rem 1.1rem}
+  .plan-pricebox-row{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+  .plan-pricebox-row .label{font-size:.85rem;color:rgb(var(--fg)/.85)}
+  .plan-price{display:flex;align-items:baseline;gap:.3rem}
+  .plan-price .num{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+  .plan-price .cur{font-size:.8rem;color:rgb(var(--muted))}
+  .plan-price .per{font-size:.78rem;color:rgb(var(--muted))}
+  .plan-pricebox-sub{margin-top:.3rem;font-size:.78rem;color:rgb(var(--muted))}
+  .plan-feats-label{margin-top:1.4rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:rgb(var(--muted))}
+  .plan-feats{list-style:none;margin:.8rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1}
   .plan-feats li{font-size:.9rem;line-height:1.45;color:rgb(var(--fg)/.9);display:flex;gap:.55rem}
   .plan-feats li:before{content:"✓";color:rgb(var(--teal));font-weight:700;flex-shrink:0}
   .plan-cta{margin-top:1.6rem;display:block;text-align:center;border-radius:.6rem;padding:.85rem 1rem;font-weight:700;font-size:.95rem;cursor:pointer;border:1px solid rgb(var(--border-strong));background:transparent;color:rgb(var(--fg));transition:all .2s}
   .plan.featured .plan-cta{background:rgb(var(--teal));color:rgb(var(--bg));border-color:rgb(var(--teal))}
   .plan-cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
-  .assist{margin-top:2.2rem;border:1px dashed rgb(var(--border-strong));border-radius:1.1rem;padding:1.6rem 1.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between}
-  .assist-text h3{margin:0 0 .35rem;font-size:1.05rem}
-  .assist-text p{margin:0;font-size:.88rem;color:rgb(var(--muted));max-width:52ch}
-  .assist-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+  .plan-custom-card{margin-top:1.6rem}
+  .plan-custom{margin-top:1.6rem;display:grid;gap:1.8rem;grid-template-columns:1fr}
+  @media(min-width:860px){.plan-custom{grid-template-columns:1.1fr 1.4fr}}
+  .plan-custom-left .plan-pricebox{margin-top:1.3rem}
+  .plan-custom-right{display:flex;flex-direction:column}
+  .plan-custom-right .plan-feats-label{margin-top:0}
+  .plan-custom-btns{margin-top:1.4rem;display:flex;gap:.7rem;flex-wrap:wrap}
   .gx-wa{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;border-radius:.55rem;padding:.75rem 1.2rem;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
   .gx-wa:hover{filter:brightness(1.07)}
   .gx-mail{display:inline-flex;align-items:center;gap:.5rem;background:rgb(var(--teal)/.1);border:1px solid rgb(var(--teal)/.4);color:rgb(var(--teal));border-radius:.55rem;padding:.75rem 1.2rem;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
@@ -95,52 +107,109 @@
 
     <div class="plans">
       <div class="plan">
+        <div class="plan-top">
+          <div class="plan-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h8M8 14h5"/><path d="M21 12c0 4.97-4.03 9-9 9-1.6 0-3.1-.42-4.4-1.15L3 21l1.2-3.56A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg></div>
+          <div class="plan-pill">Self-serve</div>
+        </div>
         <div class="plan-name">Básico</div>
         <div class="plan-audience">Para empresas chicas</div>
-        <div class="plan-price"><span class="cur">USD</span><span class="num">99</span><span class="per">/mes</span></div>
+        <div class="plan-pricebox">
+          <div class="plan-pricebox-row">
+            <span class="label">Suscripción mensual</span>
+            <div class="plan-price"><span class="cur">USD</span><span class="num">99</span><span class="per">/mes</span></div>
+          </div>
+          <div class="plan-pricebox-sub">Un agente de atención + CRM, sin límite de usuarios</div>
+        </div>
+        <p class="plan-feats-label">Incluye</p>
         <ul class="plan-feats">
-          <li>Un agente de atención por WhatsApp, conectado solo por QR</li>
-          <li>Cargás tu propio catálogo y contexto del negocio</li>
-          <li>CRM: cada contacto queda registrado con su historial</li>
+          <li>Agente de atención por WhatsApp, conectado solo con un QR</li>
+          <li>Responde catálogo, precios, stock y horarios automáticamente</li>
+          <li>Cargás tu propio catálogo y contexto del negocio cuando quieras</li>
+          <li>CRM: cada contacto queda con su historial completo</li>
           <li>Invitás a tu equipo sin límite de usuarios</li>
+          <li>Soporte por WhatsApp y email</li>
         </ul>
         <button class="plan-cta" onclick="elegirPlan('self_serve_basic','Básico')">Elegir Básico</button>
       </div>
       <div class="plan featured">
         <div class="plan-badge">El más elegido</div>
+        <div class="plan-top">
+          <div class="plan-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M6 17V10m5 7V7m5 10v-5"/><path d="m3 11 5-4 5 3 7-6"/></svg></div>
+          <div class="plan-pill">Self-serve</div>
+        </div>
         <div class="plan-name">Pro</div>
         <div class="plan-audience">Para empresas medianas</div>
-        <div class="plan-price"><span class="cur">USD</span><span class="num">149</span><span class="per">/mes</span></div>
+        <div class="plan-pricebox">
+          <div class="plan-pricebox-row">
+            <span class="label">Suscripción mensual</span>
+            <div class="plan-price"><span class="cur">USD</span><span class="num">149</span><span class="per">/mes</span></div>
+          </div>
+          <div class="plan-pricebox-sub">Básico + ventas asistidas y métricas completas</div>
+        </div>
+        <p class="plan-feats-label">Todo lo de Básico, más</p>
         <ul class="plan-feats">
-          <li>Todo lo de Básico</li>
-          <li>Guelux Comercial: presupuestos y seguimientos automáticos</li>
+          <li>Guelux Comercial: presupuestos automáticos por WhatsApp</li>
+          <li>Seguimientos automáticos a clientes que no cerraron</li>
           <li>Métricas e informes completos de tu negocio</li>
           <li>Mayor volumen de IA incluido por mes</li>
         </ul>
         <button class="plan-cta" onclick="elegirPlan('self_serve_pro','Pro')">Elegir Pro</button>
       </div>
       <div class="plan">
+        <div class="plan-top">
+          <div class="plan-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l6-4 6 4v13M4 21h16M9 21v-6h4v6M9 11h.01M13 11h.01M9 15h.01M13 15h.01"/></svg></div>
+          <div class="plan-pill">Self-serve</div>
+        </div>
         <div class="plan-name">Empresa</div>
         <div class="plan-audience">Para empresas grandes de +20 empleados</div>
-        <div class="plan-price"><span class="cur">USD</span><span class="num">549</span><span class="per">/mes</span></div>
+        <div class="plan-pricebox">
+          <div class="plan-pricebox-row">
+            <span class="label">Suscripción mensual</span>
+            <div class="plan-price"><span class="cur">USD</span><span class="num">549</span><span class="per">/mes</span></div>
+          </div>
+          <div class="plan-pricebox-sub">Pro + operación completa del negocio</div>
+        </div>
+        <p class="plan-feats-label">Todo lo de Pro, más</p>
         <ul class="plan-feats">
-          <li>Todo lo de Pro</li>
-          <li>Guelux Operación: pedidos, stock, caja y reservas</li>
+          <li>Guelux Operación: pedidos, stock y caja</li>
+          <li>Gestión de reservas (si tu rubro las usa)</li>
           <li>Mayor volumen de IA incluido por mes</li>
-          <li>Pensado para equipos y operaciones más grandes</li>
+          <li>Pensado para equipos y operaciones de +20 empleados</li>
         </ul>
         <button class="plan-cta" onclick="elegirPlan('self_serve_empresa','Empresa')">Elegir Empresa</button>
       </div>
     </div>
 
-    <div class="assist">
-      <div class="assist-text">
-        <h3>¿Preferís que te acompañemos?</h3>
-        <p>Martín te arma el agente a medida, carga el contexto con vos y te acompaña en el arranque. Charlamos sin compromiso.</p>
+    <div class="plan plan-custom-card">
+      <div class="plan-top">
+        <div class="plan-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21H5a2 2 0 0 1-2-2v-6l4-5h6l4 5v2M11 21l3-3m0 0 3-3m-3 3 3 3m-3-3-3 3"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></div>
+        <div class="plan-pill">A tu medida</div>
       </div>
-      <div class="assist-btns">
-        <a href="https://wa.me/4367846548939?text=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente%20de%20Guelux." target="_blank" rel="noopener noreferrer" class="gx-wa">WhatsApp</a>
-        <a href="mailto:gueluxsystems@gmail.com?subject=Quiero%20asistencia%20personalizada&body=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente." class="gx-mail">Enviar un email</a>
+      <div class="plan-name">Personalizado</div>
+      <div class="plan-audience">Para casos que no entran en un plan estándar — o que prefieren que Martín los arme</div>
+      <div class="plan-custom">
+        <div class="plan-custom-left">
+          <div class="plan-pricebox">
+            <div class="plan-pricebox-row">
+              <span class="label">Implementación guiada</span>
+              <span class="label" style="color:rgb(var(--teal));font-weight:700">Precio a medida</span>
+            </div>
+            <div class="plan-pricebox-sub">Según rubro, volumen y qué módulos necesitás activos</div>
+          </div>
+          <div class="plan-custom-btns">
+            <a href="https://wa.me/4367846548939?text=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente%20de%20Guelux." target="_blank" rel="noopener noreferrer" class="gx-wa">WhatsApp</a>
+            <a href="mailto:gueluxsystems@gmail.com?subject=Quiero%20asistencia%20personalizada&body=Hola%21%20Quiero%20que%20me%20ayuden%20a%20armar%20mi%20agente." class="gx-mail">Enviar un email</a>
+          </div>
+        </div>
+        <div class="plan-custom-right">
+          <p class="plan-feats-label">Incluye</p>
+          <ul class="plan-feats">
+            <li>Martín arma el agente con vos — no es self-serve</li>
+            <li>Carga de contexto y catálogo acompañada de punta a punta</li>
+            <li>Elegís qué módulos activar (Comercial, Operación, Métricas)</li>
+            <li>Pensado para casos fuera de los planes estándar</li>
+          </ul>
+        </div>
       </div>
     </div>
 
