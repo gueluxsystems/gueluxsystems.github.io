@@ -57,6 +57,13 @@
   .plan-price .cur{font-size:.8rem;color:rgb(var(--muted))}
   .plan-price .per{font-size:.78rem;color:rgb(var(--muted))}
   .plan-pricebox-sub{margin-top:.3rem;font-size:.78rem;color:rgb(var(--muted))}
+  .plan-annual-note{margin-top:.3rem;font-size:.75rem;color:rgb(var(--teal));font-weight:600;display:none}
+  .cycle-toggle{display:flex;justify-content:center;margin:0 0 1.8rem}
+  .cycle-toggle-in{display:inline-flex;border:1px solid rgb(var(--border-strong));border-radius:999px;padding:.25rem;gap:.15rem;background:rgb(var(--panel))}
+  .cycle-btn{border:none;background:transparent;color:rgb(var(--muted));font-size:.85rem;font-weight:700;padding:.5rem 1.1rem;border-radius:999px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+  .cycle-btn.active{background:rgb(var(--teal));color:rgb(var(--bg))}
+  .cycle-btn .save-pill{font-size:.68rem;font-weight:800;background:rgb(var(--wasabi));color:rgb(var(--bg));padding:.1rem .4rem;border-radius:999px}
+  .cycle-btn.active .save-pill{background:rgb(var(--bg));color:rgb(var(--wasabi))}
   .plan-feats-label{margin-top:1.4rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:rgb(var(--muted))}
   .plan-feats{list-style:none;margin:.8rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1}
   .plan-feats li{font-size:.9rem;line-height:1.45;color:rgb(var(--fg)/.9);display:flex;gap:.55rem}
@@ -105,6 +112,13 @@
     <h1 class="gx-h1">Elegí cómo arrancar <span class="em">con Guelux</span></h1>
     <p class="gx-sub">Self-serve: te das de alta, conectás tu WhatsApp y cargás tu catálogo solo. Si preferís que te acompañemos, también se puede.</p>
 
+    <div class="cycle-toggle">
+      <div class="cycle-toggle-in">
+        <button type="button" class="cycle-btn active" id="btnMonthly" onclick="setBillingCycle('monthly')">Mensual</button>
+        <button type="button" class="cycle-btn" id="btnAnnual" onclick="setBillingCycle('annual')">Anual <span class="save-pill">2 meses gratis</span></button>
+      </div>
+    </div>
+
     <div class="plans">
       <div class="plan">
         <div class="plan-top">
@@ -115,10 +129,11 @@
         <div class="plan-audience">Para empresas chicas</div>
         <div class="plan-pricebox">
           <div class="plan-pricebox-row">
-            <span class="label">Suscripción mensual</span>
-            <div class="plan-price"><span class="cur">USD</span><span class="num">99</span><span class="per">/mes</span></div>
+            <span class="label plan-cycle-label">Suscripción mensual</span>
+            <div class="plan-price" data-usd-monthly="99"><span class="cur">USD</span><span class="num">99</span><span class="per">/mes</span></div>
           </div>
           <div class="plan-pricebox-sub">Un agente de atención + CRM, sin límite de usuarios</div>
+          <div class="plan-annual-note"></div>
         </div>
         <p class="plan-feats-label">Incluye</p>
         <ul class="plan-feats">
@@ -141,10 +156,11 @@
         <div class="plan-audience">Para empresas medianas</div>
         <div class="plan-pricebox">
           <div class="plan-pricebox-row">
-            <span class="label">Suscripción mensual</span>
-            <div class="plan-price"><span class="cur">USD</span><span class="num">149</span><span class="per">/mes</span></div>
+            <span class="label plan-cycle-label">Suscripción mensual</span>
+            <div class="plan-price" data-usd-monthly="149"><span class="cur">USD</span><span class="num">149</span><span class="per">/mes</span></div>
           </div>
           <div class="plan-pricebox-sub">Básico + ventas asistidas y métricas completas</div>
+          <div class="plan-annual-note"></div>
         </div>
         <p class="plan-feats-label">Todo lo de Básico, más</p>
         <ul class="plan-feats">
@@ -164,10 +180,11 @@
         <div class="plan-audience">Para empresas grandes de +20 empleados</div>
         <div class="plan-pricebox">
           <div class="plan-pricebox-row">
-            <span class="label">Suscripción mensual</span>
-            <div class="plan-price"><span class="cur">USD</span><span class="num">549</span><span class="per">/mes</span></div>
+            <span class="label plan-cycle-label">Suscripción mensual</span>
+            <div class="plan-price" data-usd-monthly="549"><span class="cur">USD</span><span class="num">549</span><span class="per">/mes</span></div>
           </div>
           <div class="plan-pricebox-sub">Pro + operación completa del negocio</div>
+          <div class="plan-annual-note"></div>
         </div>
         <p class="plan-feats-label">Todo lo de Pro, más</p>
         <ul class="plan-feats">
@@ -250,6 +267,7 @@
           <input id="password" name="password" type="password" required minlength="8" maxlength="200" />
         </div>
         <input type="hidden" id="plan" name="plan" required />
+        <input type="hidden" id="billingCycle" name="billingCycle" value="monthly" />
         <div class="form-error" id="formError"></div>
         <button type="submit" class="form-submit" id="formSubmit">Continuar al pago</button>
         <p class="form-note">Te lleva al checkout seguro de MercadoPago. Tu cuenta se activa apenas se confirma el primer pago.</p>
@@ -261,11 +279,49 @@
 
 <script>
   var API_BASE = 'https://gueluxapi-production.up.railway.app/api/v1';
-  var PLAN_LABELS = { self_serve_basic: 'Básico — USD 99/mes', self_serve_pro: 'Pro — USD 149/mes', self_serve_empresa: 'Empresa — USD 549/mes' };
+  var PLAN_NAMES = { self_serve_basic: 'Básico', self_serve_pro: 'Pro', self_serve_empresa: 'Empresa' };
+  var ANNUAL_MONTHS_FREE = 2; // 12 meses de uso, se cobran 10 — mismo criterio del backend (packages/contracts/plan-catalog.ts)
+  var billingCycle = 'monthly';
+  var chosenPlan = null;
 
-  function elegirPlan(planId, label){
+  function setBillingCycle(cycle){
+    billingCycle = cycle;
+    document.getElementById('billingCycle').value = cycle;
+    document.getElementById('btnMonthly').classList.toggle('active', cycle === 'monthly');
+    document.getElementById('btnAnnual').classList.toggle('active', cycle === 'annual');
+    document.querySelectorAll('.plan-cycle-label').forEach(function (labelEl) {
+      labelEl.textContent = cycle === 'annual' ? 'Suscripción anual' : 'Suscripción mensual';
+    });
+    document.querySelectorAll('.plan-price[data-usd-monthly]').forEach(function (priceEl) {
+      var monthly = Number(priceEl.getAttribute('data-usd-monthly'));
+      var numEl = priceEl.querySelector('.num');
+      var perEl = priceEl.querySelector('.per');
+      var noteEl = priceEl.closest('.plan-pricebox').querySelector('.plan-annual-note');
+      if (cycle === 'annual') {
+        var monthsBilled = 12 - ANNUAL_MONTHS_FREE;
+        var annualTotal = monthly * monthsBilled;
+        numEl.textContent = Math.round(annualTotal / 12);
+        perEl.textContent = '/mes';
+        noteEl.textContent = 'USD ' + annualTotal + '/año, pago único · ' + ANNUAL_MONTHS_FREE + ' meses gratis';
+        noteEl.style.display = 'block';
+      } else {
+        numEl.textContent = monthly;
+        perEl.textContent = '/mes';
+        noteEl.style.display = 'none';
+      }
+    });
+    if (chosenPlan) updateChosenLabel();
+  }
+
+  function updateChosenLabel(){
+    var suffix = billingCycle === 'annual' ? ' — anual (' + ANNUAL_MONTHS_FREE + ' meses gratis)' : ' — mensual';
+    document.getElementById('chosenPlanLabel').textContent = 'Plan elegido: ' + PLAN_NAMES[chosenPlan] + suffix;
+  }
+
+  function elegirPlan(planId){
+    chosenPlan = planId;
     document.getElementById('plan').value = planId;
-    document.getElementById('chosenPlanLabel').textContent = 'Plan elegido: ' + PLAN_LABELS[planId];
+    updateChosenLabel();
     document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -289,6 +345,7 @@
       password: document.getElementById('password').value,
       verticalId: document.getElementById('verticalId').value,
       plan: plan,
+      billingCycle: document.getElementById('billingCycle').value,
     };
     fetch(API_BASE + '/signup/start', {
       method: 'POST',
